@@ -1,0 +1,102 @@
+openapi: 3.1.0
+info:
+  title: Moon Courier Crisis API
+  version: 0.1.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/health:
+    get:
+      responses:
+        '200': { description: Health status }
+  /api/mission:
+    get:
+      responses:
+        '200': { description: Mission dashboard }
+  /api/mission/reset:
+    post:
+      responses:
+        '200': { description: Reset dashboard }
+  /api/dispatch/preview:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/DispatchSelection' }
+      responses:
+        '200': { description: Dispatch preview }
+        '400': { $ref: '#/components/responses/Error' }
+  /api/dispatch/launch:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+                - { $ref: '#/components/schemas/DispatchSelection' }
+                - type: object
+                  required: [idempotencyKey]
+                  properties:
+                    idempotencyKey: { type: string, minLength: 8 }
+      responses:
+        '200': { description: Persisted delivery replay }
+        '422': { $ref: '#/components/responses/Error' }
+  /api/ai/assistant:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [missionId, message]
+              properties:
+                missionId: { type: string }
+                message: { type: string, minLength: 2, maxLength: 2000 }
+                selectedOrderId: { type: string }
+                selectedRoverId: { type: string }
+      responses:
+        '200': { description: Mission Control response }
+  /api/scenarios:
+    get:
+      responses:
+        '200': { description: Scenario list }
+  /api/scenarios/generate:
+    post:
+      responses:
+        '200': { description: Generated and validated scenario }
+  /api/analytics:
+    get:
+      responses:
+        '200': { description: Analytics dashboard }
+  /api/ops/summary:
+    get:
+      responses:
+        '200': { description: Operations summary }
+components:
+  schemas:
+    DispatchSelection:
+      type: object
+      required: [missionId, orderId, roverId]
+      properties:
+        missionId: { type: string }
+        orderId: { type: string }
+        roverId: { type: string }
+        objective:
+          type: string
+          enum: [balanced, fastest, safest, efficient]
+    Error:
+      type: object
+      required: [error, message]
+      properties:
+        error: { type: string }
+        message: { type: string }
+        details: {}
+  responses:
+    Error:
+      description: Error response
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }

@@ -1,0 +1,95 @@
+{
+  "generatedAt": "2026-08-14T23:05:31.814Z",
+  "modelRouting": {
+    "primary": "deepseek/deepseek-v4-flash-0731",
+    "fallback": "openai/gpt-5.6-luna",
+    "aiConfigured": false,
+    "localModelImplemented": false
+  },
+  "database": {
+    "path": "./data/moon-courier.db",
+    "counts": {
+      "scenarios": 1,
+      "missions": 1,
+      "rovers": 3,
+      "orders": 6,
+      "deliveries": 0,
+      "events": 0,
+      "aiRuns": 0
+    },
+    "foreignKeyViolations": []
+  },
+  "demo": {
+    "missionId": "mission_shackleton_demo",
+    "scenarioId": "scenario_shackleton-medical-surge_384719",
+    "orders": 6,
+    "rovers": 3,
+    "impossibleOrders": [
+      "HAB-021"
+    ],
+    "feasiblePairs": 6
+  },
+  "validation": {
+    "valid": true,
+    "checks": [
+      {
+        "code": "UNIQUE_IDENTIFIERS",
+        "status": "pass",
+        "message": "All identifiers are unique"
+      },
+      {
+        "code": "MAP_CONNECTED",
+        "status": "pass",
+        "message": "Map graph is connected"
+      },
+      {
+        "code": "REFERENCES_VALID",
+        "status": "pass",
+        "message": "All map references resolve"
+      },
+      {
+        "code": "HAS_FEASIBLE_DELIVERY",
+        "status": "pass",
+        "message": "6 feasible assignments found"
+      },
+      {
+        "code": "HAS_IMPOSSIBLE_ORDER",
+        "status": "pass",
+        "message": "Impossible order(s): HAB-021"
+      },
+      {
+        "code": "NUMERIC_RANGES",
+        "status": "pass",
+        "message": "Numeric values are within accepted ranges"
+      },
+      {
+        "code": "RULE_RANGES",
+        "status": "pass",
+        "message": "Scenario rules are within accepted ranges"
+      },
+      {
+        "code": "TARGET_GROSS_UPPER_BOUND",
+        "status": "pass",
+        "message": "Target is below gross upper bound of 4080 credits",
+        "details": {
+          "grossUpperBound": 4080
+        }
+      }
+    ],
+    "feasiblePairCount": 6,
+    "impossibleOrderCodes": [
+      "HAB-021"
+    ]
+  },
+  "balance": {
+    "survivable": true,
+    "quality": "balanced",
+    "successRate": 0.646,
+    "notes": [
+      "Safe-balanced policy success rate: 65%",
+      "Median final credits: 3214.89",
+      "Mean completion rate: 79%"
+    ]
+  },
+  "recentAiRuns": []
+}

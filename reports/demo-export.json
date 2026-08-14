@@ -1,0 +1,862 @@
+{
+  "dashboard": {
+    "mission": {
+      "id": "mission_shackleton_demo",
+      "scenarioId": "scenario_shackleton-medical-surge_384719",
+      "name": "Shackleton Medical Surge",
+      "status": "active",
+      "currentMinute": 0,
+      "currentDay": 1,
+      "credits": 2400,
+      "score": 0,
+      "rating": 100,
+      "targetCredits": 3200,
+      "seed": 384719,
+      "startedAt": "2026-08-14T22:50:40.608Z",
+      "endedAt": null,
+      "createdAt": "2026-08-14T22:50:40.608Z",
+      "updatedAt": "2026-08-14T22:50:40.608Z"
+    },
+    "scenario": {
+      "id": "scenario_shackleton-medical-surge_384719",
+      "name": "Shackleton Medical Surge",
+      "description": "A seven-day relief mission with limited heavy transport and a day-four medical demand spike.\n\nMedical and life-support demand rises sharply while shadow sectors remain risky.",
+      "difficulty": "hard",
+      "durationDays": 7,
+      "minimumBatteryReservePercent": 12
+    },
+    "world": {
+      "zones": [
+        {
+          "id": "scenario_shackleton-medical-surge_384719_zone_1",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "name": "Artemis Base plain sector",
+          "riskMultiplier": 1.08,
+          "speedMultiplier": 1,
+          "energyMultiplier": 1,
+          "color": "#42d9ff",
+          "polygon": [
+            {
+              "x": 6,
+              "y": 58
+            },
+            {
+              "x": 22,
+              "y": 58
+            },
+            {
+              "x": 22,
+              "y": 74
+            },
+            {
+              "x": 6,
+              "y": 74
+            }
+          ]
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_zone_2",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "name": "Shackleton Hub shadow sector",
+          "riskMultiplier": 1.44,
+          "speedMultiplier": 0.76,
+          "energyMultiplier": 1.22,
+          "color": "#ff5c73",
+          "polygon": [
+            {
+              "x": 68,
+              "y": 14
+            },
+            {
+              "x": 84,
+              "y": 14
+            },
+            {
+              "x": 84,
+              "y": 30
+            },
+            {
+              "x": 68,
+              "y": 30
+            }
+          ]
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_zone_3",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "name": "Tycho Works crater sector",
+          "riskMultiplier": 1.32,
+          "speedMultiplier": 0.66,
+          "energyMultiplier": 1.34,
+          "color": "#ff8b53",
+          "polygon": [
+            {
+              "x": 38,
+              "y": 35
+            },
+            {
+              "x": 54,
+              "y": 35
+            },
+            {
+              "x": 54,
+              "y": 51
+            },
+            {
+              "x": 38,
+              "y": 51
+            }
+          ]
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_zone_4",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "name": "Aurora Lab dust sector",
+          "riskMultiplier": 1.2,
+          "speedMultiplier": 0.82,
+          "energyMultiplier": 1.18,
+          "color": "#a98bff",
+          "polygon": [
+            {
+              "x": 75,
+              "y": 57
+            },
+            {
+              "x": 91,
+              "y": 57
+            },
+            {
+              "x": 91,
+              "y": 73
+            },
+            {
+              "x": 75,
+              "y": 73
+            }
+          ]
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_zone_5",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "name": "East Charger plain sector",
+          "riskMultiplier": 1.08,
+          "speedMultiplier": 1,
+          "energyMultiplier": 1,
+          "color": "#42d9ff",
+          "polygon": [
+            {
+              "x": 58,
+              "y": 41
+            },
+            {
+              "x": 74,
+              "y": 41
+            },
+            {
+              "x": 74,
+              "y": 57
+            },
+            {
+              "x": 58,
+              "y": 57
+            }
+          ]
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_zone_6",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "name": "Ridge Relay ridge sector",
+          "riskMultiplier": 1.24,
+          "speedMultiplier": 0.72,
+          "energyMultiplier": 1.28,
+          "color": "#ffb653",
+          "polygon": [
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 38,
+              "y": 17
+            },
+            {
+              "x": 38,
+              "y": 33
+            },
+            {
+              "x": 22,
+              "y": 33
+            }
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "id": "scenario_shackleton-medical-surge_384719_node_aur",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "code": "AUR",
+          "name": "Aurora Lab",
+          "kind": "colony",
+          "x": 83,
+          "y": 65,
+          "zoneId": "scenario_shackleton-medical-surge_384719_zone_4",
+          "hasCharger": false
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_node_base",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "code": "BASE",
+          "name": "Artemis Base",
+          "kind": "base",
+          "x": 14,
+          "y": 66,
+          "zoneId": "scenario_shackleton-medical-surge_384719_zone_1",
+          "hasCharger": true
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_node_east",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "code": "EAST",
+          "name": "East Charger",
+          "kind": "charger",
+          "x": 66,
+          "y": 49,
+          "zoneId": "scenario_shackleton-medical-surge_384719_zone_5",
+          "hasCharger": true
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_node_ridge",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "code": "RIDGE",
+          "name": "Ridge Relay",
+          "kind": "relay",
+          "x": 30,
+          "y": 25,
+          "zoneId": "scenario_shackleton-medical-surge_384719_zone_6",
+          "hasCharger": false
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_node_shak",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "code": "SHAK",
+          "name": "Shackleton Hub",
+          "kind": "colony",
+          "x": 76,
+          "y": 22,
+          "zoneId": "scenario_shackleton-medical-surge_384719_zone_2",
+          "hasCharger": false
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_node_tych",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "code": "TYCH",
+          "name": "Tycho Works",
+          "kind": "colony",
+          "x": 46,
+          "y": 43,
+          "zoneId": "scenario_shackleton-medical-surge_384719_zone_3",
+          "hasCharger": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "scenario_shackleton-medical-surge_384719_edge_1",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "fromNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+          "toNodeId": "scenario_shackleton-medical-surge_384719_node_ridge",
+          "distanceKm": 10.56,
+          "terrain": "ridge",
+          "speedFactor": 0.72,
+          "energyFactor": 1.28,
+          "baseRisk": 0.12,
+          "bidirectional": true
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_edge_10",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "fromNodeId": "scenario_shackleton-medical-surge_384719_node_ridge",
+          "toNodeId": "scenario_shackleton-medical-surge_384719_node_east",
+          "distanceKm": 10.38,
+          "terrain": "plain",
+          "speedFactor": 1,
+          "energyFactor": 1,
+          "baseRisk": 0.04,
+          "bidirectional": true
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_edge_2",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "fromNodeId": "scenario_shackleton-medical-surge_384719_node_ridge",
+          "toNodeId": "scenario_shackleton-medical-surge_384719_node_tych",
+          "distanceKm": 5.78,
+          "terrain": "crater",
+          "speedFactor": 0.66,
+          "energyFactor": 1.34,
+          "baseRisk": 0.16,
+          "bidirectional": true
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_edge_3",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "fromNodeId": "scenario_shackleton-medical-surge_384719_node_east",
+          "toNodeId": "scenario_shackleton-medical-surge_384719_node_tych",
+          "distanceKm": 5.01,
+          "terrain": "crater",
+          "speedFactor": 0.66,
+          "energyFactor": 1.34,
+          "baseRisk": 0.16,
+          "bidirectional": true
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_edge_4",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "fromNodeId": "scenario_shackleton-medical-surge_384719_node_shak",
+          "toNodeId": "scenario_shackleton-medical-surge_384719_node_east",
+          "distanceKm": 6.91,
+          "terrain": "plain",
+          "speedFactor": 1,
+          "energyFactor": 1,
+          "baseRisk": 0.04,
+          "bidirectional": true
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_edge_5",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "fromNodeId": "scenario_shackleton-medical-surge_384719_node_shak",
+          "toNodeId": "scenario_shackleton-medical-surge_384719_node_aur",
+          "distanceKm": 10.46,
+          "terrain": "dust",
+          "speedFactor": 0.82,
+          "energyFactor": 1.18,
+          "baseRisk": 0.1,
+          "bidirectional": true
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_edge_6",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "fromNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+          "toNodeId": "scenario_shackleton-medical-surge_384719_node_tych",
+          "distanceKm": 9.46,
+          "terrain": "crater",
+          "speedFactor": 0.66,
+          "energyFactor": 1.34,
+          "baseRisk": 0.16,
+          "bidirectional": true
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_edge_7",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "fromNodeId": "scenario_shackleton-medical-surge_384719_node_shak",
+          "toNodeId": "scenario_shackleton-medical-surge_384719_node_tych",
+          "distanceKm": 8.79,
+          "terrain": "crater",
+          "speedFactor": 0.66,
+          "energyFactor": 1.34,
+          "baseRisk": 0.16,
+          "bidirectional": true
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_edge_8",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "fromNodeId": "scenario_shackleton-medical-surge_384719_node_east",
+          "toNodeId": "scenario_shackleton-medical-surge_384719_node_aur",
+          "distanceKm": 5.6,
+          "terrain": "dust",
+          "speedFactor": 0.82,
+          "energyFactor": 1.18,
+          "baseRisk": 0.1,
+          "bidirectional": true
+        },
+        {
+          "id": "scenario_shackleton-medical-surge_384719_edge_9",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "fromNodeId": "scenario_shackleton-medical-surge_384719_node_aur",
+          "toNodeId": "scenario_shackleton-medical-surge_384719_node_tych",
+          "distanceKm": 10.33,
+          "terrain": "crater",
+          "speedFactor": 0.66,
+          "energyFactor": 1.34,
+          "baseRisk": 0.16,
+          "bidirectional": true
+        }
+      ]
+    },
+    "rovers": [
+      {
+        "id": "mission_shackleton_demo_rover_1",
+        "missionId": "mission_shackleton_demo",
+        "code": "ATLAS-1",
+        "name": "Atlas Heavy Rover",
+        "status": "available",
+        "nodeId": "scenario_shackleton-medical-surge_384719_node_base",
+        "batteryPercent": 84,
+        "batteryCapacityKwh": 60,
+        "capacityKg": 120,
+        "baseSpeedKph": 28,
+        "baseEnergyKwhPerKm": 0.52,
+        "riskResistance": 0.42,
+        "repairCostCredits": 180,
+        "metadata": {}
+      },
+      {
+        "id": "mission_shackleton_demo_rover_3",
+        "missionId": "mission_shackleton_demo",
+        "code": "MULE-3",
+        "name": "Mule Utility Rover",
+        "status": "available",
+        "nodeId": "scenario_shackleton-medical-surge_384719_node_base",
+        "batteryPercent": 21,
+        "batteryCapacityKwh": 55,
+        "capacityKg": 90,
+        "baseSpeedKph": 23,
+        "baseEnergyKwhPerKm": 0.46,
+        "riskResistance": 0.35,
+        "repairCostCredits": 150,
+        "metadata": {}
+      },
+      {
+        "id": "mission_shackleton_demo_rover_2",
+        "missionId": "mission_shackleton_demo",
+        "code": "SCOUT-2",
+        "name": "Scout Fast Rover",
+        "status": "available",
+        "nodeId": "scenario_shackleton-medical-surge_384719_node_base",
+        "batteryPercent": 63,
+        "batteryCapacityKwh": 32,
+        "capacityKg": 45,
+        "baseSpeedKph": 42,
+        "baseEnergyKwhPerKm": 0.37,
+        "riskResistance": 0.22,
+        "repairCostCredits": 105,
+        "metadata": {}
+      }
+    ],
+    "orders": [
+      {
+        "id": "mission_shackleton_demo_order_3",
+        "missionId": "mission_shackleton_demo",
+        "code": "BIO-014",
+        "title": "Biological samples",
+        "category": "science",
+        "originNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+        "destinationNodeId": "scenario_shackleton-medical-surge_384719_node_ridge",
+        "weightKg": 18,
+        "rewardCredits": 210,
+        "failurePenaltyCredits": 70,
+        "urgency": "critical",
+        "deadlineMinute": 95,
+        "status": "pending",
+        "impossibleReason": null,
+        "createdAt": "2026-08-14T22:50:40.608Z",
+        "updatedAt": "2026-08-14T22:50:40.608Z"
+      },
+      {
+        "id": "mission_shackleton_demo_order_1",
+        "missionId": "mission_shackleton_demo",
+        "code": "MED-017",
+        "title": "Medical oxygen",
+        "category": "medical",
+        "originNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+        "destinationNodeId": "scenario_shackleton-medical-surge_384719_node_shak",
+        "weightKg": 72,
+        "rewardCredits": 480,
+        "failurePenaltyCredits": 120,
+        "urgency": "critical",
+        "deadlineMinute": 160,
+        "status": "pending",
+        "impossibleReason": null,
+        "createdAt": "2026-08-14T22:50:40.608Z",
+        "updatedAt": "2026-08-14T22:50:40.608Z"
+      },
+      {
+        "id": "mission_shackleton_demo_order_2",
+        "missionId": "mission_shackleton_demo",
+        "code": "COM-008",
+        "title": "Communication module",
+        "category": "equipment",
+        "originNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+        "destinationNodeId": "scenario_shackleton-medical-surge_384719_node_aur",
+        "weightKg": 34,
+        "rewardCredits": 260,
+        "failurePenaltyCredits": 80,
+        "urgency": "high",
+        "deadlineMinute": 260,
+        "status": "pending",
+        "impossibleReason": null,
+        "createdAt": "2026-08-14T22:50:40.608Z",
+        "updatedAt": "2026-08-14T22:50:40.608Z"
+      },
+      {
+        "id": "mission_shackleton_demo_order_4",
+        "missionId": "mission_shackleton_demo",
+        "code": "WTR-011",
+        "title": "Water recycling filters",
+        "category": "life-support",
+        "originNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+        "destinationNodeId": "scenario_shackleton-medical-surge_384719_node_tych",
+        "weightKg": 88,
+        "rewardCredits": 430,
+        "failurePenaltyCredits": 110,
+        "urgency": "high",
+        "deadlineMinute": 360,
+        "status": "pending",
+        "impossibleReason": null,
+        "createdAt": "2026-08-14T22:50:40.608Z",
+        "updatedAt": "2026-08-14T22:50:40.608Z"
+      },
+      {
+        "id": "mission_shackleton_demo_order_6",
+        "missionId": "mission_shackleton_demo",
+        "code": "HAB-021",
+        "title": "Habitat pressure frame",
+        "category": "construction",
+        "originNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+        "destinationNodeId": "scenario_shackleton-medical-surge_384719_node_tych",
+        "weightKg": 148,
+        "rewardCredits": 720,
+        "failurePenaltyCredits": 180,
+        "urgency": "normal",
+        "deadlineMinute": null,
+        "status": "pending",
+        "impossibleReason": "Payload 148 kg exceeds fleet maximum capacity 120 kg",
+        "createdAt": "2026-08-14T22:50:40.608Z",
+        "updatedAt": "2026-08-14T22:50:40.608Z"
+      },
+      {
+        "id": "mission_shackleton_demo_order_5",
+        "missionId": "mission_shackleton_demo",
+        "code": "SOL-006",
+        "title": "Solar inverter",
+        "category": "energy",
+        "originNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+        "destinationNodeId": "scenario_shackleton-medical-surge_384719_node_east",
+        "weightKg": 52,
+        "rewardCredits": 300,
+        "failurePenaltyCredits": 90,
+        "urgency": "normal",
+        "deadlineMinute": null,
+        "status": "pending",
+        "impossibleReason": null,
+        "createdAt": "2026-08-14T22:50:40.608Z",
+        "updatedAt": "2026-08-14T22:50:40.608Z"
+      }
+    ],
+    "events": [],
+    "goal": {
+      "state": "in_progress",
+      "reason": "Mission continues",
+      "progressPercent": 75
+    },
+    "ai": {
+      "enabled": false,
+      "primaryModel": "deepseek/deepseek-v4-flash-0731",
+      "fallbackModel": "openai/gpt-5.6-luna",
+      "mode": "offline"
+    }
+  },
+  "analytics": {
+    "kpis": {
+      "credits": 2400,
+      "netChange": 0,
+      "completionRate": 0,
+      "totalDeliveries": 0,
+      "deliveredOrders": 0,
+      "failedDeliveries": 0,
+      "blockedOrders": 1,
+      "averageRoverUtilization": 0
+    },
+    "economy": [
+      {
+        "sequence": 1,
+        "label": "Start",
+        "balance": 2400,
+        "delta": 2400
+      }
+    ],
+    "failures": [
+      {
+        "reason": "Intentionally impossible order",
+        "count": 1
+      }
+    ],
+    "roverUtilization": [
+      {
+        "roverId": "mission_shackleton_demo_rover_1",
+        "roverCode": "ATLAS-1",
+        "movingPercent": 0,
+        "chargingPercent": 0,
+        "idlePercent": 1,
+        "damagedPercent": 0
+      },
+      {
+        "roverId": "mission_shackleton_demo_rover_3",
+        "roverCode": "MULE-3",
+        "movingPercent": 0,
+        "chargingPercent": 0,
+        "idlePercent": 1,
+        "damagedPercent": 0
+      },
+      {
+        "roverId": "mission_shackleton_demo_rover_2",
+        "roverCode": "SCOUT-2",
+        "movingPercent": 0,
+        "chargingPercent": 0,
+        "idlePercent": 1,
+        "damagedPercent": 0
+      }
+    ],
+    "comparison": [
+      {
+        "key": "baseline",
+        "label": "Current fleet",
+        "summary": {
+          "iterations": 100,
+          "successRate": 0.63,
+          "bankruptcyRate": 0,
+          "meanFinalCredits": 3034.55,
+          "medianFinalCredits": 3214.89,
+          "p10FinalCredits": 2645.48,
+          "p90FinalCredits": 3237.51,
+          "meanCompletionRate": 0.785,
+          "meanFailedDeliveries": 0.29
+        }
+      },
+      {
+        "key": "extra-heavy-rover",
+        "label": "+1 heavy rover",
+        "summary": {
+          "iterations": 100,
+          "successRate": 0.73,
+          "bankruptcyRate": 0,
+          "meanFinalCredits": 3069.1,
+          "medianFinalCredits": 3228.69,
+          "p10FinalCredits": 2675.61,
+          "p90FinalCredits": 3246.69,
+          "meanCompletionRate": 0.7967,
+          "meanFailedDeliveries": 0.22
+        }
+      },
+      {
+        "key": "faster-charging",
+        "label": "+30% charging speed",
+        "summary": {
+          "iterations": 100,
+          "successRate": 0.69,
+          "bankruptcyRate": 0,
+          "meanFinalCredits": 3051.44,
+          "medianFinalCredits": 3227.34,
+          "p10FinalCredits": 2659.07,
+          "p90FinalCredits": 3249.97,
+          "meanCompletionRate": 0.785,
+          "meanFailedDeliveries": 0.29
+        }
+      }
+    ],
+    "evidence": {
+      "eventCount": 0,
+      "deliveryCount": 0,
+      "simulationIterations": 300,
+      "generatedAt": "2026-08-14T23:05:53.173Z"
+    }
+  },
+  "snapshots": [
+    {
+      "sequence": 1,
+      "reason": "mission_initialized",
+      "state": {
+        "mission": {
+          "id": "mission_shackleton_demo",
+          "scenarioId": "scenario_shackleton-medical-surge_384719",
+          "name": "Shackleton Medical Surge",
+          "status": "active",
+          "currentMinute": 0,
+          "currentDay": 1,
+          "credits": 2400,
+          "score": 0,
+          "rating": 100,
+          "targetCredits": 3200,
+          "seed": 384719,
+          "startedAt": "2026-08-14T22:50:40.608Z",
+          "endedAt": null,
+          "createdAt": "2026-08-14T22:50:40.608Z",
+          "updatedAt": "2026-08-14T22:50:40.608Z"
+        },
+        "rovers": [
+          {
+            "id": "mission_shackleton_demo_rover_1",
+            "missionId": "mission_shackleton_demo",
+            "code": "ATLAS-1",
+            "name": "Atlas Heavy Rover",
+            "status": "available",
+            "nodeId": "scenario_shackleton-medical-surge_384719_node_base",
+            "batteryPercent": 84,
+            "batteryCapacityKwh": 60,
+            "capacityKg": 120,
+            "baseSpeedKph": 28,
+            "baseEnergyKwhPerKm": 0.52,
+            "riskResistance": 0.42,
+            "repairCostCredits": 180,
+            "metadata": {}
+          },
+          {
+            "id": "mission_shackleton_demo_rover_2",
+            "missionId": "mission_shackleton_demo",
+            "code": "SCOUT-2",
+            "name": "Scout Fast Rover",
+            "status": "available",
+            "nodeId": "scenario_shackleton-medical-surge_384719_node_base",
+            "batteryPercent": 63,
+            "batteryCapacityKwh": 32,
+            "capacityKg": 45,
+            "baseSpeedKph": 42,
+            "baseEnergyKwhPerKm": 0.37,
+            "riskResistance": 0.22,
+            "repairCostCredits": 105,
+            "metadata": {}
+          },
+          {
+            "id": "mission_shackleton_demo_rover_3",
+            "missionId": "mission_shackleton_demo",
+            "code": "MULE-3",
+            "name": "Mule Utility Rover",
+            "status": "available",
+            "nodeId": "scenario_shackleton-medical-surge_384719_node_base",
+            "batteryPercent": 21,
+            "batteryCapacityKwh": 55,
+            "capacityKg": 90,
+            "baseSpeedKph": 23,
+            "baseEnergyKwhPerKm": 0.46,
+            "riskResistance": 0.35,
+            "repairCostCredits": 150,
+            "metadata": {}
+          }
+        ],
+        "orders": [
+          {
+            "code": "MED-017",
+            "title": "Medical oxygen",
+            "category": "medical",
+            "originNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+            "destinationNodeId": "scenario_shackleton-medical-surge_384719_node_shak",
+            "weightKg": 72,
+            "rewardCredits": 480,
+            "failurePenaltyCredits": 120,
+            "urgency": "critical",
+            "deadlineMinute": 160,
+            "id": "mission_shackleton_demo_order_1",
+            "missionId": "mission_shackleton_demo",
+            "status": "pending",
+            "impossibleReason": null,
+            "createdAt": "2026-08-14T22:50:40.608Z",
+            "updatedAt": "2026-08-14T22:50:40.608Z"
+          },
+          {
+            "code": "COM-008",
+            "title": "Communication module",
+            "category": "equipment",
+            "originNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+            "destinationNodeId": "scenario_shackleton-medical-surge_384719_node_aur",
+            "weightKg": 34,
+            "rewardCredits": 260,
+            "failurePenaltyCredits": 80,
+            "urgency": "high",
+            "deadlineMinute": 260,
+            "id": "mission_shackleton_demo_order_2",
+            "missionId": "mission_shackleton_demo",
+            "status": "pending",
+            "impossibleReason": null,
+            "createdAt": "2026-08-14T22:50:40.608Z",
+            "updatedAt": "2026-08-14T22:50:40.608Z"
+          },
+          {
+            "code": "BIO-014",
+            "title": "Biological samples",
+            "category": "science",
+            "originNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+            "destinationNodeId": "scenario_shackleton-medical-surge_384719_node_ridge",
+            "weightKg": 18,
+            "rewardCredits": 210,
+            "failurePenaltyCredits": 70,
+            "urgency": "critical",
+            "deadlineMinute": 95,
+            "id": "mission_shackleton_demo_order_3",
+            "missionId": "mission_shackleton_demo",
+            "status": "pending",
+            "impossibleReason": null,
+            "createdAt": "2026-08-14T22:50:40.608Z",
+            "updatedAt": "2026-08-14T22:50:40.608Z"
+          },
+          {
+            "code": "WTR-011",
+            "title": "Water recycling filters",
+            "category": "life-support",
+            "originNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+            "destinationNodeId": "scenario_shackleton-medical-surge_384719_node_tych",
+            "weightKg": 88,
+            "rewardCredits": 430,
+            "failurePenaltyCredits": 110,
+            "urgency": "high",
+            "deadlineMinute": 360,
+            "id": "mission_shackleton_demo_order_4",
+            "missionId": "mission_shackleton_demo",
+            "status": "pending",
+            "impossibleReason": null,
+            "createdAt": "2026-08-14T22:50:40.608Z",
+            "updatedAt": "2026-08-14T22:50:40.608Z"
+          },
+          {
+            "code": "SOL-006",
+            "title": "Solar inverter",
+            "category": "energy",
+            "originNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+            "destinationNodeId": "scenario_shackleton-medical-surge_384719_node_east",
+            "weightKg": 52,
+            "rewardCredits": 300,
+            "failurePenaltyCredits": 90,
+            "urgency": "normal",
+            "deadlineMinute": null,
+            "id": "mission_shackleton_demo_order_5",
+            "missionId": "mission_shackleton_demo",
+            "status": "pending",
+            "impossibleReason": null,
+            "createdAt": "2026-08-14T22:50:40.608Z",
+            "updatedAt": "2026-08-14T22:50:40.608Z"
+          },
+          {
+            "code": "HAB-021",
+            "title": "Habitat pressure frame",
+            "category": "construction",
+            "originNodeId": "scenario_shackleton-medical-surge_384719_node_base",
+            "destinationNodeId": "scenario_shackleton-medical-surge_384719_node_tych",
+            "weightKg": 148,
+            "rewardCredits": 720,
+            "failurePenaltyCredits": 180,
+            "urgency": "normal",
+            "deadlineMinute": null,
+            "id": "mission_shackleton_demo_order_6",
+            "missionId": "mission_shackleton_demo",
+            "status": "pending",
+            "impossibleReason": "Payload 148 kg exceeds fleet maximum capacity 120 kg",
+            "createdAt": "2026-08-14T22:50:40.608Z",
+            "updatedAt": "2026-08-14T22:50:40.608Z"
+          }
+        ]
+      },
+      "createdAt": "2026-08-14T22:50:40.608Z"
+    }
+  ],
+  "deliveries": [],
+  "economy": [
+    {
+      "id": "mission_shackleton_demo_economy_initial",
+      "missionId": "mission_shackleton_demo",
+      "deliveryId": null,
+      "eventId": null,
+      "type": "initial",
+      "amountCredits": 2400,
+      "balanceAfter": 2400,
+      "description": "Mission starting credits",
+      "createdAt": "2026-08-14T22:50:40.608Z"
+    }
+  ]
+}

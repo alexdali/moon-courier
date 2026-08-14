@@ -1,0 +1,46 @@
+@base = http://localhost:3000
+@mission = mission_shackleton_demo
+
+### Health
+GET {{base}}/api/health
+
+### Mission
+GET {{base}}/api/mission
+
+### Reset
+POST {{base}}/api/mission/reset
+
+### Preview (replace IDs from mission response)
+POST {{base}}/api/dispatch/preview
+Content-Type: application/json
+
+{
+  "missionId": "{{mission}}",
+  "orderId": "mission_shackleton_demo_order_1",
+  "roverId": "mission_shackleton_demo_rover_1",
+  "objective": "balanced"
+}
+
+### Launch
+POST {{base}}/api/dispatch/launch
+Content-Type: application/json
+
+{
+  "missionId": "{{mission}}",
+  "orderId": "mission_shackleton_demo_order_1",
+  "roverId": "mission_shackleton_demo_rover_1",
+  "objective": "balanced",
+  "idempotencyKey": "manual-demo-0001"
+}
+
+### AI
+POST {{base}}/api/ai/assistant
+Content-Type: application/json
+
+{
+  "missionId": "{{mission}}",
+  "message": "Recommend the safest critical delivery while preserving 15% battery."
+}
+
+### Analytics
+GET {{base}}/api/analytics?iterations=80

@@ -1,0 +1,32 @@
+name: Bug report
+description: Ошибка симуляции, данных, AI или интерфейса
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Что произошло
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Как воспроизвести
+      placeholder: Сценарий, заказ, ровер, seed, команда
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Ожидаемое поведение
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit / версия
+  - type: textarea
+    id: evidence
+    attributes:
+      label: События, скриншоты, логи

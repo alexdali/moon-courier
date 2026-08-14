@@ -1,0 +1,75 @@
+{
+  "validatedAtUtc": "2026-08-14T21:14:17Z",
+  "files": {
+    "total": 364,
+    "srcTypeScript": 251,
+    "domainModules": 56,
+    "applicationModules": 43,
+    "aiModules": 24,
+    "databaseModules": 18,
+    "reactComponents": 26,
+    "apiRoutes": 14,
+    "tests": 35,
+    "documentation": 38,
+    "mockupFiles": 19
+  },
+  "structure": {
+    "status": "pass",
+    "sourceFiles": 251,
+    "unresolvedLocalImports": 0
+  },
+  "syntax": {
+    "status": "pass",
+    "typescriptFilesParsed": 267
+  },
+  "approximateTypeGraph": {
+    "status": "pass",
+    "note": "External packages were represented by temporary declarations; run real npm typecheck locally."
+  },
+  "sqlite": {
+    "status": "pass",
+    "migrations": 3,
+    "tables": 17,
+    "views": 3,
+    "indexes": 11,
+    "foreignKeyViolations": 0
+  },
+  "domain": {
+    "status": "pass",
+    "scenario": "Shackleton Medical Surge",
+    "feasiblePairs": 6,
+    "impossibleOrders": ["HAB-021"],
+    "dispatchableCandidates": 6,
+    "recommended": "MED-017 -> ATLAS-1"
+  },
+  "monteCarlo": {
+    "iterations": 500,
+    "successRate": 0.646,
+    "bankruptcyRate": 0,
+    "meanFinalCredits": 3032.47,
+    "medianFinalCredits": 3214.89,
+    "p10FinalCredits": 2404.9,
+    "p90FinalCredits": 3237.51,
+    "meanCompletionRate": 0.786,
+    "meanFailedDeliveries": 0.28,
+    "survivable": true,
+    "quality": "balanced"
+  },
+  "assets": {
+    "htmlPages": 6,
+    "missingLocalReferences": 0,
+    "javascriptSyntax": "pass"
+  },
+  "secretScan": {
+    "realHits": 0
+  },
+  "notExecutedBecauseNpmRegistryWasUnavailable": [
+    "npm install",
+    "npm run typecheck",
+    "npm run lint",
+    "npm run test",
+    "npm run build",
+    "npm run test:e2e",
+    "npm run screenshots"
+  ]
+}

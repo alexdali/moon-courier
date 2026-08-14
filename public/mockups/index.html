@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081018">
+  <title>Moon Courier Crisis — Mission Control</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="mission-page">
+  <svg class="svg-sprite" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+  </symbol>
+  <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m21 8-9 5-9-5"/><path d="M3 8l9-5 9 5v8l-9 5-9-5Z"/><path d="M12 13v8"/>
+  </symbol>
+  <symbol id="i-rover" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 14h12l2 3H4l2-3Z"/><path d="M8 14V9h8v5"/><path d="M10 9V6h4v3"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><path d="M4 17h16"/>
+  </symbol>
+  <symbol id="i-battery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="6" width="18" height="12" rx="2"/><path d="M22 10v4"/><path d="M6 10h7"/>
+  </symbol>
+  <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h4a4 4 0 0 0 4-4v-4a4 4 0 0 0-4-4H8"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
+  </symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10.3 2.9 1.8 17a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 2.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>
+  </symbol>
+  <symbol id="i-credits" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M16 8.5A5 5 0 1 0 16 15.5"/><path d="M9 12h6"/>
+  </symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m12 3-1.1 3.2a2 2 0 0 1-1.2 1.2L6.5 8.5l3.2 1.1a2 2 0 0 1 1.2 1.2L12 14l1.1-3.2a2 2 0 0 1 1.2-1.2l3.2-1.1-3.2-1.1a2 2 0 0 1-1.2-1.2Z"/><path d="m19 15-.6 1.7a1.2 1.2 0 0 1-.7.7L16 18l1.7.6a1.2 1.2 0 0 1 .7.7L19 21l.6-1.7a1.2 1.2 0 0 1 .7-.7L22 18l-1.7-.6a1.2 1.2 0 0 1-.7-.7Z"/><path d="m5 2-.5 1.4a1 1 0 0 1-.6.6L2.5 4.5l1.4.5a1 1 0 0 1 .6.6L5 7l.5-1.4a1 1 0 0 1 .6-.6l1.4-.5L6.1 4a1 1 0 0 1-.6-.6Z"/>
+  </symbol>
+  <symbol id="i-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/>
+  </symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m7 4 13 8-13 8Z"/>
+  </symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 5v14M16 5v14"/>
+  </symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m12 2 9 5-9 5-9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/>
+  </symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>
+  </symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 5h16M7 12h10M10 19h4"/>
+  </symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m9 18 6-6-6-6"/>
+  </symbol>
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/>
+  </symbol>
+  <symbol id="i-analytics" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+  </symbol>
+  <symbol id="i-wand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m15 4 5 5L8 21l-5-5Z"/><path d="m14 5 5 5"/><path d="m6 3 .5 1.5L8 5l-1.5.5L6 7l-.5-1.5L4 5l1.5-.5Z"/><path d="m19 15 .5 1.5L21 17l-1.5.5L19 19l-.5-1.5L17 17l1.5-.5Z"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m5 12 4 4L19 6"/>
+  </symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m6 6 12 12M18 6 6 18"/>
+  </symbol>
+  <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>
+  </symbol>
+  <symbol id="i-zoom-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/>
+  </symbol>
+  <symbol id="i-zoom-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6"/>
+  </symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+  </symbol>
+  <symbol id="i-database" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/>
+  </symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>
+  </symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/>
+  </symbol>
+  <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15M15 6v15"/>
+  </symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m13 2-9 12h8l-1 8 9-12h-8Z"/>
+  </symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14M13 6l6 6-6 6"/>
+  </symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 12H5M11 18l-6-6 6-6"/>
+  </symbol>
+  <symbol id="i-package-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m21 8-9 5-9-5"/><path d="M3 8l9-5 9 5v8l-9 5-9-5Z"/><path d="M12 13v8"/><path d="m8 15 2 2 4-4"/>
+  </symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14.7 6.3a4 4 0 0 0-5-5L12 3.6 9.6 6 7.3 3.7a4 4 0 0 0 5 5L5 16l3 3 7.7-7.7a4 4 0 0 0 5-5L18.4 8.6 16 6.2Z"/>
+  </symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 12h4l2-7 4 14 2-7h6"/>
+  </symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>
+  </symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+  </symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17.5 19H6a4 4 0 1 1 .7-7.9A6 6 0 0 1 18.2 9 5 5 0 0 1 17.5 19Z"/>
+  </symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/>
+  </symbol>
+  <symbol id="i-file-json" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M10 13a2 2 0 0 0-2 2v1a2 2 0 0 1-2 2 2 2 0 0 1 2 2v1M14 13a2 2 0 0 1 2 2v1a2 2 0 0 0 2 2 2 2 0 0 0-2 2v1"/>
+  </symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 11a8 8 0 1 0 2 5"/><path d="M20 4v7h-7"/>
+  </symbol>
+  <symbol id="i-more" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>
+  </symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>
+  </symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3" cy="6" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="3" cy="18" r="1"/>
+  </symbol>
+</svg>
+
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Moon Courier Mission Control">
+        <span class="brand-mark">
+          <svg class="icon icon-lg" aria-hidden="true"><use href="#i-moon"></use></svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name">MOON COURIER</span>
+          <span class="brand-subtitle">Shackleton Relief · Mission Control</span>
+        </span>
+      </a>
+
+      <div class="topbar-center" aria-label="Simulation controls">
+        <div class="sim-time">
+          <span class="sim-day">DAY 04</span>
+          <span class="sim-clock" data-sim-clock>14:32</span>
+        </div>
+        <button class="icon-btn" aria-label="Pause simulation" data-toast-title="Simulation paused" data-toast-copy="The operational clock is frozen for inspection.">
+          <svg class="icon icon-sm" aria-hidden="true"><use href="#i-pause"></use></svg>
+        </button>
+        <div class="segmented" aria-label="Simulation speed">
+          <button class="is-active" type="button">1×</button>
+          <button type="button">2×</button>
+          <button type="button">4×</button>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <div class="header-stat">
+          <span class="header-stat-label">Balance</span>
+          <span class="header-stat-value text-mint" id="balanceValue">2 840 CR</span>
+        </div>
+        <div class="header-stat">
+          <span class="header-stat-label">Objective</span>
+          <span class="header-stat-value">7 / 12 delivered</span>
+        </div>
+        <div class="header-divider"></div>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a class="nav-link is-active" href="index.html" aria-current="page">
+            <svg class="icon icon-sm" aria-hidden="true"><use href="#i-map"></use></svg><span>Mission</span>
+          </a>
+          <a class="nav-link" href="scenario.html">
+            <svg class="icon icon-sm" aria-hidden="true"><use href="#i-wand"></use></svg><span>Architect</span>
+          </a>
+          <a class="nav-link" href="analytics.html">
+            <svg class="icon icon-sm" aria-hidden="true"><use href="#i-analytics"></use></svg><span>Debrief</span>
+          </a>
+        </nav>
+        <button class="btn btn-soft-cyan" type="button" data-action="toggle-provider" title="Switch AI provider">
+          <svg class="icon icon-sm" aria-hidden="true"><use data-provider-use href="#i-cloud"></use></svg>
+          <span data-provider-label>Cloud Flash</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="mission-layout">
+      <aside class="panel orders-panel" aria-label="Orders">
+        <div class="panel-header">
+          <div class="panel-title-group">
+            <h1 class="panel-title">Orders</h1>
+            <div class="panel-subtitle"><span id="activeOrderCount">6</span> active · 2 critical</div>
+          </div>
+          <div class="panel-actions">
+            <button class="icon-btn" type="button" title="Sort orders" data-toast-title="Orders sorted" data-toast-copy="Critical and time-sensitive orders are shown first.">
+              <svg class="icon icon-sm" aria-hidden="true"><use href="#i-sliders"></use></svg>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <div class="orders-toolbar">
+            <label class="search-field">
+              <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+              <input id="orderSearch" type="search" placeholder="Search order or colony" aria-label="Search orders">
+            </label>
+            <button class="icon-btn" type="button" aria-label="Filter orders" data-toast-title="Filters ready" data-toast-copy="Use the quick status filters below.">
+              <svg class="icon icon-sm" aria-hidden="true"><use href="#i-filter"></use></svg>
+            </button>
+          </div>
+          <div class="filter-row" aria-label="Order filters">
+            <button class="filter-chip is-active" type="button" data-filter="all">All</button>
+            <button class="filter-chip" type="button" data-filter="critical">Critical</button>
+            <button class="filter-chip" type="button" data-filter="feasible">Feasible</button>
+            <button class="filter-chip" type="button" data-filter="blocked">Blocked</button>
+          </div>
+        </div>
+
+        <div class="orders-list" id="ordersList">
+          <button class="order-card is-selected" type="button" data-order-id="med" data-filter-tags="critical feasible" data-search="MED-017 Medical oxygen Shackleton Hub">
+            <div class="order-top">
+              <span class="order-id">MED-017</span>
+              <span class="order-title">Medical oxygen</span>
+              <span class="tag red">Critical</span>
+            </div>
+            <div class="order-middle">
+              <span class="order-metric"><svg class="icon icon-sm"><use href="#i-box"></use></svg>72 kg</span>
+              <span class="order-metric"><svg class="icon icon-sm"><use href="#i-route"></use></svg>14.2 km</span>
+              <span class="order-metric">+480 CR</span>
+            </div>
+            <div class="order-bottom">
+              <span class="order-destination">Shackleton Hub</span>
+              <span class="order-compatibility text-amber">High risk · 1 rover</span>
+            </div>
+          </button>
+
+          <button class="order-card" type="button" data-order-id="com" data-filter-tags="feasible" data-search="COM-008 Communication module Artemis Relay">
+            <div class="order-top">
+              <span class="order-id">COM-008</span>
+              <span class="order-title">Communication module</span>
+              <span class="tag amber">High</span>
+            </div>
+            <div class="order-middle">
+              <span class="order-metric"><svg class="icon icon-sm"><use href="#i-box"></use></svg>34 kg</span>
+              <span class="order-metric"><svg class="icon icon-sm"><use href="#i-route"></use></svg>9.8 km</span>
+              <span class="order-metric">+260 CR</span>
+            </div>
+            <div class="order-bottom">
+              <span class="order-destination">Artemis Relay</span>
+              <span class="order-compatibility text-mint">Low risk · 2 rovers</span>
+            </div>
+          </button>
+
+          <button class="order-card is-blocked" type="button" data-order-id="hab" data-filter-tags="blocked" data-search="HAB-021 Habitat frame Copernicus Yard impossible blocked">
+            <div class="order-top">
+              <span class="order-id">HAB-021</span>
+              <span class="order-title">Habitat frame</span>
+              <span class="tag red">Blocked</span>
+            </div>
+            <div class="order-middle">
+              <span class="order-metric"><svg class="icon icon-sm"><use href="#i-box"></use></svg>148 kg</span>
+              <span class="order-metric"><svg class="icon icon-sm"><use href="#i-route"></use></svg>18.7 km</span>
+              <span class="order-metric">+720 CR</span>
+            </div>
+            <div class="order-bottom">
+              <span class="order-destination">Copernicus Yard</span>
+              <span class="order-compatibility text-red">No compatible rover</span>
+            </div>
+          </button>
+
+          <button class="order-card" type="button" data-order-id="bio" data-filter-tags="critical feasible" data-search="BIO-014 Research samples Tycho Lab urgent">
+            <div class="order-top">
+              <span class="order-id">BIO-014</span>
+              <span class="order-title">Research samples</span>
+              <span class="tag amber">00:28</span>
+            </div>
+            <div class="order-middle">
+              <span class="order-metric"><svg class="icon icon-sm"><use href="#i-box"></use></svg>18 kg</span>
+              <span class="order-metric"><svg class="icon icon-sm"><use href="#i-route"></use></svg>11.5 km</span>
+              <span class="order-metric">+310 CR</span>
+            </div>
+            <div class="order-bottom">
+              <span class="order-destination">Tycho Lab</span>
+              <span class="order-compatibility text-amber">Medium risk · 2 rovers</span>
+            </div>
+          </button>
+
+          <button class="order-card" type="button" data-order-id="eng" data-filter-tags="feasible" data-search="ENG-033 Pump controller Echo Ridge">
+            <div class="order-top">
+              <span class="order-id">ENG-033</span>
+              <span class="order-title">Pump controller</span>
+              <span class="tag cyan">Normal</span>
+            </div>
+            <div class="order-middle">
+              <span class="order-metric"><svg class="icon icon-sm"><use href="#i-box"></use></svg>41 kg</span>
+              <span class="order-metric"><svg class="icon icon-sm"><use href="#i-route"></use></svg>7.1 km</span>
+              <span class="order-metric">+190 CR</span>
+            </div>
+            <div class="order-bottom">
+              <span class="order-destination">Echo Ridge</span>
+              <span class="order-compatibility text-mint">Low risk · 2 rovers</span>
+            </div>
+          </button>
+
+          <button class="order-card" type="button" data-order-id="sup" data-filter-tags="feasible" data-search="SUP-026 Food crates Selene Camp">
+            <div class="order-top">
+              <span class="order-id">SUP-026</span>
+              <span class="order-title">Food crates</span>
+              <span class="tag cyan">Normal</span>
+            </div>
+            <div class="order-middle">
+              <span class="order-metric"><svg class="icon icon-sm"><use href="#i-box"></use></svg>56 kg</span>
+              <span class="order-metric"><svg class="icon icon-sm"><use href="#i-route"></use></svg>12.6 km</span>
+              <span class="order-metric">+240 CR</span>
+            </div>
+            <div class="order-bottom">
+              <span class="order-destination">Selene Camp</span>
+              <span class="order-compatibility text-amber">Medium risk · 1 rover</span>
+            </div>
+          </button>
+        </div>
+
+        <div class="orders-footer">
+          <span><svg class="icon icon-sm" style="display:inline;vertical-align:-3px"><use href="#i-database"></use></svg> State autosaved</span>
+          <span class="mono">6 / 12 visible</span>
+        </div>
+      </aside>
+
+      <section class="center-column" aria-label="Mission map and event timeline">
+        <section class="panel map-panel">
+          <div class="panel-header">
+            <div class="map-title">
+              <strong>Shackleton Sector</strong>
+              <span>89.90°S · 0.00°E</span>
+            </div>
+            <div class="panel-actions">
+              <span class="status-pill mint"><span class="status-dot"></span> Network stable</span>
+              <button class="icon-btn" type="button" aria-label="Map layers" data-toast-title="Map layers" data-toast-copy="Terrain, routes, risk zones and live telemetry are enabled.">
+                <svg class="icon icon-sm"><use href="#i-layers"></use></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="map-canvas" id="mainMap">
+            <svg class="map-art" viewBox="0 0 960 600" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <pattern id="smallGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+                  <path d="M48 0H0V48" fill="none" stroke="rgba(154,170,183,.11)" stroke-width="1"/>
+                </pattern>
+                <pattern id="bigGrid" width="192" height="192" patternUnits="userSpaceOnUse">
+                  <rect width="192" height="192" fill="url(#smallGrid)"/>
+                  <path d="M192 0H0V192" fill="none" stroke="rgba(154,170,183,.12)" stroke-width="1.4"/>
+                </pattern>
+                <radialGradient id="craterShade" cx="35%" cy="30%">
+                  <stop offset="0" stop-color="rgba(185,174,151,.08)"/>
+                  <stop offset=".7" stop-color="rgba(50,59,62,.03)"/>
+                  <stop offset="1" stop-color="rgba(0,0,0,.12)"/>
+                </radialGradient>
+              </defs>
+              <rect width="960" height="600" fill="url(#bigGrid)" class="map-grid-lines"/>
+
+              <path class="map-contour" d="M-20 144C90 105 161 106 245 139s142 34 239-1 175-46 263-10 151 39 233 16"/>
+              <path class="map-contour" d="M-10 166C88 132 167 130 253 161s143 31 235-3 176-40 260-7 147 36 224 17"/>
+              <path class="map-contour" d="M-5 432c115-42 182-35 266 2s160 42 249 6 163-52 255-24 141 35 212 20"/>
+              <path class="map-contour" d="M-7 458c113-39 183-31 269 7s157 38 246 4 165-49 253-22 147 33 219 18"/>
+
+              <circle class="map-crater" cx="174" cy="150" r="74" fill="url(#craterShade)"/>
+              <circle class="map-crater-inner" cx="174" cy="150" r="55"/>
+              <circle class="map-crater" cx="726" cy="384" r="98" fill="url(#craterShade)"/>
+              <circle class="map-crater-inner" cx="726" cy="384" r="73"/>
+              <circle class="map-crater" cx="485" cy="220" r="42" fill="url(#craterShade)"/>
+              <circle class="map-crater-inner" cx="485" cy="220" r="31"/>
+              <circle class="map-crater" cx="862" cy="119" r="48" fill="url(#craterShade)"/>
+              <circle class="map-crater-inner" cx="862" cy="119" r="35"/>
+
+              <polygon class="risk-zone amber" points="440,80 635,48 696,170 578,235 423,183"/>
+              <polygon class="risk-zone red" points="620,260 868,218 930,355 802,478 631,407 570,326"/>
+
+              <path class="map-route secondary" d="M210 470C285 390 355 362 455 332S638 252 762 168"/>
+              <path class="map-route secondary" d="M210 470C302 453 374 446 470 466S637 488 790 454"/>
+              <path class="map-route secondary" d="M210 470C252 351 303 292 410 239S581 118 720 94"/>
+              <path class="map-route secondary" d="M210 470C363 417 489 397 618 372S765 318 875 286"/>
+
+              <path id="route-med" class="map-route is-active is-risk" d="M210 470C295 388 377 350 472 321S640 248 762 168"/>
+              <path id="route-com" class="map-route" d="M210 470C304 450 393 447 481 467S649 489 790 454"/>
+              <path id="route-hab" class="map-route" d="M210 470C256 348 314 287 411 235S588 119 720 94"/>
+              <path id="route-bio" class="map-route" d="M210 470C360 414 486 396 617 370S768 317 875 286"/>
+              <path id="route-eng" class="map-route" d="M210 470C298 437 350 392 407 346S494 281 551 262"/>
+              <path id="route-sup" class="map-route" d="M210 470C341 491 454 525 585 514S740 498 850 519"/>
+
+              <text class="map-sector-label" x="30" y="42">A1</text>
+              <text class="map-sector-label" x="226" y="42">B1</text>
+              <text class="map-sector-label" x="418" y="42">C1</text>
+              <text class="map-sector-label" x="610" y="42">D1</text>
+              <text class="map-sector-label" x="802" y="42">E1</text>
+              <text class="map-sector-label" x="30" y="236">A2</text>
+              <text class="map-sector-label" x="226" y="236">B2</text>
+              <text class="map-sector-label" x="418" y="236">C2</text>
+              <text class="map-sector-label" x="610" y="236">D2</text>
+              <text class="map-sector-label" x="802" y="236">E2</text>
+              <text class="map-sector-label" x="30" y="428">A3</text>
+              <text class="map-sector-label" x="226" y="428">B3</text>
+              <text class="map-sector-label" x="418" y="428">C3</text>
+              <text class="map-sector-label" x="610" y="428">D3</text>
+              <text class="map-sector-label" x="802" y="428">E3</text>
+            </svg>
+
+            <button class="map-marker base" type="button" style="left:21.9%;top:78.3%" aria-label="Asteria Base">
+              <span class="map-marker-ring"><svg class="icon icon-sm"><use href="#i-home"></use></svg></span>
+              <span class="marker-label">Asteria Base</span>
+            </button>
+
+            <button class="map-marker is-critical is-selected" type="button" data-map-order="med" style="left:79.4%;top:28%" aria-label="Shackleton Hub, critical order">
+              <span class="map-marker-ring"><svg class="icon icon-sm"><use href="#i-box"></use></svg></span>
+              <span class="marker-label">Shackleton Hub <span class="marker-badge">MED</span></span>
+            </button>
+
+            <button class="map-marker" type="button" data-map-order="com" style="left:82.3%;top:75.7%" aria-label="Artemis Relay">
+              <span class="map-marker-ring"><svg class="icon icon-sm"><use href="#i-route"></use></svg></span>
+              <span class="marker-label">Artemis Relay</span>
+            </button>
+
+            <button class="map-marker is-blocked" type="button" data-map-order="hab" style="left:75%;top:15.7%" aria-label="Copernicus Yard, blocked order">
+              <span class="map-marker-ring"><svg class="icon icon-sm"><use href="#i-lock"></use></svg></span>
+              <span class="marker-label">Copernicus Yard <span class="marker-badge">148 kg</span></span>
+            </button>
+
+            <button class="map-marker" type="button" data-map-order="bio" style="left:91.1%;top:47.7%" aria-label="Tycho Lab">
+              <span class="map-marker-ring"><svg class="icon icon-sm"><use href="#i-box"></use></svg></span>
+              <span class="marker-label">Tycho Lab <span class="marker-badge">00:28</span></span>
+            </button>
+
+            <button class="map-marker" type="button" data-map-order="eng" style="left:57.4%;top:43.7%" aria-label="Echo Ridge">
+              <span class="map-marker-ring"><svg class="icon icon-sm"><use href="#i-wrench"></use></svg></span>
+              <span class="marker-label">Echo Ridge</span>
+            </button>
+
+            <button class="map-marker" type="button" data-map-order="sup" style="left:88.5%;top:86.5%" aria-label="Selene Camp">
+              <span class="map-marker-ring"><svg class="icon icon-sm"><use href="#i-box"></use></svg></span>
+              <span class="marker-label">Selene Camp</span>
+            </button>
+
+            <div class="rover-map-marker" id="roverMapAtlas" data-label="ATLAS-1" style="left:27%;top:69%">
+              <svg class="icon icon-sm"><use href="#i-rover"></use></svg>
+            </div>
+
+            <div class="map-toolbar" aria-label="Map controls">
+              <button class="icon-btn" type="button" title="Zoom in" data-toast-title="Map zoom" data-toast-copy="Zoom level increased for route inspection.">
+                <svg class="icon icon-sm"><use href="#i-zoom-in"></use></svg>
+              </button>
+              <button class="icon-btn" type="button" title="Zoom out" data-toast-title="Map zoom" data-toast-copy="Zoom level decreased.">
+                <svg class="icon icon-sm"><use href="#i-zoom-out"></use></svg>
+              </button>
+              <button class="icon-btn" type="button" title="Recenter" data-toast-title="Map centered" data-toast-copy="The operational sector is centered on Asteria Base.">
+                <svg class="icon icon-sm"><use href="#i-target"></use></svg>
+              </button>
+            </div>
+
+            <div class="map-legend" aria-label="Map legend">
+              <span class="legend-item"><span class="legend-swatch"></span> Active route</span>
+              <span class="legend-item"><span class="legend-swatch amber"></span> Elevated risk</span>
+              <span class="legend-item"><span class="legend-swatch red"></span> Restricted</span>
+            </div>
+
+            <div class="map-telemetry">
+              <div class="map-telemetry-item"><span>Comms</span><span class="text-mint">98.4%</span></div>
+              <div class="map-telemetry-item"><span>Solar</span><span>Nominal</span></div>
+              <div class="map-telemetry-item"><span>Sector risk</span><span class="text-amber">18%</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel event-panel" aria-label="Event log">
+          <div class="panel-header">
+            <div class="panel-title-group">
+              <h2 class="panel-title">Mission timeline</h2>
+            </div>
+            <div class="panel-actions">
+              <div class="event-tabs">
+                <button class="event-tab is-active" type="button">Events</button>
+                <button class="event-tab" type="button">Telemetry</button>
+              </div>
+              <span class="status-pill"><svg class="icon icon-sm"><use href="#i-database"></use></svg><span id="eventCount">128</span> saved</span>
+            </div>
+          </div>
+          <div class="event-stream" id="eventStream" aria-live="polite">
+            <div class="event-row">
+              <span class="event-time">14:31:52</span>
+              <span class="event-icon violet"><svg class="icon icon-sm"><use href="#i-sparkles"></use></svg></span>
+              <span class="event-copy">Mission Control evaluated 12 valid assignments</span>
+              <span class="event-meta">AI</span>
+            </div>
+            <div class="event-row">
+              <span class="event-time">14:29:14</span>
+              <span class="event-icon mint"><svg class="icon icon-sm"><use href="#i-package-check"></use></svg></span>
+              <span class="event-copy">SUP-019 delivered to Selene Camp</span>
+              <span class="event-meta text-mint">+210 CR</span>
+            </div>
+            <div class="event-row">
+              <span class="event-time">14:24:08</span>
+              <span class="event-icon amber"><svg class="icon icon-sm"><use href="#i-alert"></use></svg></span>
+              <span class="event-copy">MULE-3 entered low-battery charging cycle</span>
+              <span class="event-meta">21%</span>
+            </div>
+            <div class="event-row">
+              <span class="event-time">14:18:43</span>
+              <span class="event-icon"><svg class="icon icon-sm"><use href="#i-route"></use></svg></span>
+              <span class="event-copy">Risk corridor D2 recalculated after terrain update</span>
+              <span class="event-meta">+4 min</span>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <aside class="right-column" aria-label="Rovers, dispatch and AI controls">
+        <section class="panel rovers-panel">
+          <div class="panel-header">
+            <div class="panel-title-group">
+              <h2 class="panel-title">Rovers</h2>
+              <div class="panel-subtitle">2 available · 1 charging</div>
+            </div>
+            <button class="icon-btn" type="button" title="Fleet details" data-toast-title="Fleet telemetry" data-toast-copy="All rover telemetry channels are synchronized.">
+              <svg class="icon icon-sm"><use href="#i-activity"></use></svg>
+            </button>
+          </div>
+          <div class="rover-list" id="roverList">
+            <button class="rover-card is-selected is-recommended" type="button" data-rover-id="atlas">
+              <span class="rover-symbol"><svg class="icon"><use href="#i-rover"></use></svg></span>
+              <span class="rover-copy">
+                <span class="rover-name-row"><span class="rover-name">ATLAS-1</span><span class="rover-state">Available</span></span>
+                <span class="rover-bars">
+                  <span class="metric-bar-row"><span>Battery</span><span class="metric-bar mint" style="--value:84%"><span></span></span><span class="metric-bar-value">84%</span></span>
+                  <span class="metric-bar-row"><span>Load</span><span class="metric-bar" style="--value:0%"><span></span></span><span class="metric-bar-value">0/120</span></span>
+                </span>
+              </span>
+              <span class="rover-extra"><span>28 km/h</span><span>Heavy</span></span>
+            </button>
+
+            <button class="rover-card is-incompatible" type="button" data-rover-id="scout">
+              <span class="rover-symbol"><svg class="icon"><use href="#i-rover"></use></svg></span>
+              <span class="rover-copy">
+                <span class="rover-name-row"><span class="rover-name">SCOUT-2</span><span class="rover-state">Available</span></span>
+                <span class="rover-bars">
+                  <span class="metric-bar-row"><span>Battery</span><span class="metric-bar mint" style="--value:63%"><span></span></span><span class="metric-bar-value">63%</span></span>
+                  <span class="metric-bar-row"><span>Load</span><span class="metric-bar" style="--value:0%"><span></span></span><span class="metric-bar-value">0/45</span></span>
+                </span>
+              </span>
+              <span class="rover-extra"><span>42 km/h</span><span>Light</span></span>
+            </button>
+
+            <button class="rover-card is-incompatible" type="button" data-rover-id="mule">
+              <span class="rover-symbol charging"><svg class="icon"><use href="#i-bolt"></use></svg></span>
+              <span class="rover-copy">
+                <span class="rover-name-row"><span class="rover-name">MULE-3</span><span class="rover-state violet">Charging</span></span>
+                <span class="rover-bars">
+                  <span class="metric-bar-row"><span>Battery</span><span class="metric-bar amber" style="--value:21%"><span></span></span><span class="metric-bar-value">21%</span></span>
+                  <span class="metric-bar-row"><span>Load</span><span class="metric-bar" style="--value:0%"><span></span></span><span class="metric-bar-value">0/90</span></span>
+                </span>
+              </span>
+              <span class="rover-extra"><span>23 km/h</span><span>+18 min</span></span>
+            </button>
+          </div>
+        </section>
+
+        <section class="panel dispatch-panel">
+          <div class="panel-header">
+            <div class="panel-title-group">
+              <h2 class="panel-title">Dispatch preview</h2>
+              <div class="panel-subtitle">Deterministic feasibility check</div>
+            </div>
+            <span class="status-pill mint" id="dispatchStatusPill">Ready</span>
+          </div>
+          <div class="dispatch-content">
+            <div class="dispatch-pair">
+              <strong id="dispatchOrderName">MED-017</strong>
+              <svg class="icon icon-sm pair-arrow"><use href="#i-arrow-right"></use></svg>
+              <strong id="dispatchRoverName">ATLAS-1</strong>
+            </div>
+
+            <div class="dispatch-metrics">
+              <div class="dispatch-metric">
+                <div class="dispatch-metric-label">Distance</div>
+                <div class="dispatch-metric-value"><span id="metricDistance">14.2</span><span class="dispatch-metric-note">km</span></div>
+              </div>
+              <div class="dispatch-metric">
+                <div class="dispatch-metric-label">ETA</div>
+                <div class="dispatch-metric-value"><span id="metricEta">31</span><span class="dispatch-metric-note">min</span></div>
+              </div>
+              <div class="dispatch-metric">
+                <div class="dispatch-metric-label">Battery after</div>
+                <div class="dispatch-metric-value"><span id="metricBattery" class="text-amber">24%</span><span class="dispatch-metric-note">reserve</span></div>
+              </div>
+              <div class="dispatch-metric">
+                <div class="dispatch-metric-label">Expected profit</div>
+                <div class="dispatch-metric-value"><span id="metricProfit" class="text-mint">+356</span><span class="dispatch-metric-note">CR</span></div>
+              </div>
+            </div>
+
+            <div class="dispatch-status" id="dispatchStatusBox">
+              <div class="dispatch-status-title" id="dispatchStatusTitle">
+                <svg class="icon icon-sm"><use id="dispatchStatusIcon" href="#i-check"></use></svg>
+                <span>Ready to dispatch</span>
+              </div>
+              <div class="dispatch-status-copy" id="dispatchStatusCopy">All hard constraints are satisfied. Route risk is elevated, but the projected battery reserve remains above the 20% mission policy.</div>
+              <div class="blocker-list hidden" id="blockerList"></div>
+            </div>
+
+            <div class="dispatch-actions">
+              <button class="btn btn-primary btn-wide" id="launchButton" type="button">
+                <svg class="icon icon-sm"><use href="#i-play"></use></svg>
+                <span>Launch delivery</span>
+              </button>
+              <button class="icon-btn" id="findAlternativeButton" type="button" title="Find alternative">
+                <svg class="icon icon-sm"><use href="#i-sparkles"></use></svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel ai-panel">
+          <div class="panel-header">
+            <div class="panel-title-group">
+              <h2 class="panel-title">Mission Control AI</h2>
+              <div class="panel-subtitle" data-provider-label="long">Cloud Flash · Online</div>
+            </div>
+            <div class="ai-header-status"><span class="status-dot"></span><span data-provider-status>ONLINE</span></div>
+          </div>
+          <div class="ai-body">
+            <div class="quick-actions">
+              <button class="quick-action" type="button" data-ai-action="recommend">Recommend dispatch</button>
+              <button class="quick-action" type="button" data-ai-action="blockers">Explain blockers</button>
+              <button class="quick-action" type="button" data-ai-action="simulate">Simulate alternative</button>
+            </div>
+
+            <div class="ai-feed">
+              <article class="ai-card" id="aiCard">
+                <div class="ai-card-label">
+                  <strong id="aiCardTitle">Recommendation</strong>
+                  <span class="ai-confidence" id="aiConfidence">confidence 0.93</span>
+                </div>
+                <div class="ai-copy" id="aiCopy">
+                  Assign <strong>ATLAS-1</strong> to <strong>MED-017</strong>. It is the only currently available rover that satisfies the 72 kg payload and 20% battery-reserve policy.
+                </div>
+                <div class="ai-data-grid" id="aiDataGrid">
+                  <div class="ai-data-cell"><span>Success</span><span class="text-mint">82%</span></div>
+                  <div class="ai-data-cell"><span>Battery</span><span>24%</span></div>
+                  <div class="ai-data-cell"><span>Net</span><span class="text-mint">+356 CR</span></div>
+                </div>
+                <details class="ai-tools">
+                  <summary>Used 3 deterministic tools</summary>
+                  <div class="ai-tool-list">
+                    <span class="ai-tool">dispatchPlanner</span>
+                    <span class="ai-tool">riskEstimator</span>
+                    <span class="ai-tool">economyCalculator</span>
+                  </div>
+                </details>
+                <div class="ai-card-actions">
+                  <button class="btn btn-soft-cyan" type="button" id="applyAiButton">Apply recommendation</button>
+                  <button class="btn btn-ghost" type="button" data-toast-title="Calculation trace" data-toast-copy="The planner evaluated capacity, energy, ETA, route risk and expected net reward.">Show calculations</button>
+                </div>
+              </article>
+            </div>
+
+            <form class="ai-input-wrap" id="aiForm">
+              <input class="ai-input" id="aiInput" type="text" placeholder="Ask for a plan or explanation…" autocomplete="off">
+              <button class="icon-btn is-active" type="submit" aria-label="Send command">
+                <svg class="icon icon-sm"><use href="#i-send"></use></svg>
+              </button>
+            </form>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <article class="modal-card success">
+      <div class="modal-header">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div class="result-symbol"><svg class="icon icon-lg"><use href="#i-package-check"></use></svg></div>
+          <div>
+            <div class="modal-kicker">Delivery complete</div>
+            <h2 class="modal-title" id="successTitle">MED-017 reached Shackleton Hub</h2>
+            <div class="modal-subtitle">ATLAS-1 completed the route with no cargo damage.</div>
+          </div>
+        </div>
+        <button class="icon-btn" type="button" data-modal-close aria-label="Close result">
+          <svg class="icon icon-sm"><use href="#i-x"></use></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="result-summary">
+          <div class="result-stat"><div class="result-stat-label">Travel time</div><div class="result-stat-value">29 min</div></div>
+          <div class="result-stat"><div class="result-stat-label">Battery left</div><div class="result-stat-value text-amber">26%</div></div>
+          <div class="result-stat"><div class="result-stat-label">Risk roll</div><div class="result-stat-value text-mint">Passed</div></div>
+          <div class="result-stat"><div class="result-stat-label">Events saved</div><div class="result-stat-value">7</div></div>
+        </div>
+        <div class="result-breakdown">
+          <div class="breakdown-row"><span>Order reward</span><strong class="text-mint">+480 CR</strong></div>
+          <div class="breakdown-row"><span>Energy cost</span><strong>-62 CR</strong></div>
+          <div class="breakdown-row"><span>Route service cost</span><strong>-18 CR</strong></div>
+          <div class="breakdown-row total"><span>Net result</span><strong>+400 CR</strong></div>
+        </div>
+        <div class="ai-debrief">
+          <div class="ai-debrief-header"><svg class="icon icon-sm"><use href="#i-sparkles"></use></svg> AI debrief</div>
+          <p>The selected route was the safest feasible option under the 20% battery-reserve policy. The rover arrived two minutes ahead of the conservative estimate, increasing net profit by 44 CR.</p>
+        </div>
+        <div class="modal-actions">
+          <a class="btn btn-ghost" href="delivery-success.html">Open full result</a>
+          <button class="btn btn-primary" type="button" data-modal-close>Continue mission</button>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/mission.js"></script>
+</body>
+</html>

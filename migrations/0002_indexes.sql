@@ -1,0 +1,11 @@
+CREATE INDEX IF NOT EXISTS idx_missions_status ON missions(status);
+CREATE INDEX IF NOT EXISTS idx_rovers_mission_status ON rovers(mission_id, status);
+CREATE INDEX IF NOT EXISTS idx_orders_mission_status ON orders(mission_id, status);
+CREATE INDEX IF NOT EXISTS idx_orders_urgency ON orders(mission_id, urgency, status);
+CREATE INDEX IF NOT EXISTS idx_deliveries_mission_started ON deliveries(mission_id, started_at DESC);
+CREATE INDEX IF NOT EXISTS idx_events_mission_sequence ON events(mission_id, sequence);
+CREATE INDEX IF NOT EXISTS idx_events_delivery ON events(delivery_id, sequence);
+CREATE INDEX IF NOT EXISTS idx_economy_mission_created ON economy_entries(mission_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_ai_runs_created ON ai_runs(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_ai_runs_model_status ON ai_runs(model, status);
+CREATE INDEX IF NOT EXISTS idx_simulation_runs_scenario ON simulation_runs(scenario_id, started_at DESC);

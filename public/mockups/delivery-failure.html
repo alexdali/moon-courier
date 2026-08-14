@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081018">
+  <title>Moon Courier Crisis — Delivery Failed</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+  </symbol>
+  <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m21 8-9 5-9-5"/><path d="M3 8l9-5 9 5v8l-9 5-9-5Z"/><path d="M12 13v8"/>
+  </symbol>
+  <symbol id="i-rover" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 14h12l2 3H4l2-3Z"/><path d="M8 14V9h8v5"/><path d="M10 9V6h4v3"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><path d="M4 17h16"/>
+  </symbol>
+  <symbol id="i-battery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="6" width="18" height="12" rx="2"/><path d="M22 10v4"/><path d="M6 10h7"/>
+  </symbol>
+  <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h4a4 4 0 0 0 4-4v-4a4 4 0 0 0-4-4H8"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
+  </symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10.3 2.9 1.8 17a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 2.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>
+  </symbol>
+  <symbol id="i-credits" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M16 8.5A5 5 0 1 0 16 15.5"/><path d="M9 12h6"/>
+  </symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m12 3-1.1 3.2a2 2 0 0 1-1.2 1.2L6.5 8.5l3.2 1.1a2 2 0 0 1 1.2 1.2L12 14l1.1-3.2a2 2 0 0 1 1.2-1.2l3.2-1.1-3.2-1.1a2 2 0 0 1-1.2-1.2Z"/><path d="m19 15-.6 1.7a1.2 1.2 0 0 1-.7.7L16 18l1.7.6a1.2 1.2 0 0 1 .7.7L19 21l.6-1.7a1.2 1.2 0 0 1 .7-.7L22 18l-1.7-.6a1.2 1.2 0 0 1-.7-.7Z"/><path d="m5 2-.5 1.4a1 1 0 0 1-.6.6L2.5 4.5l1.4.5a1 1 0 0 1 .6.6L5 7l.5-1.4a1 1 0 0 1 .6-.6l1.4-.5L6.1 4a1 1 0 0 1-.6-.6Z"/>
+  </symbol>
+  <symbol id="i-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/>
+  </symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m7 4 13 8-13 8Z"/>
+  </symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 5v14M16 5v14"/>
+  </symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m12 2 9 5-9 5-9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/>
+  </symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>
+  </symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 5h16M7 12h10M10 19h4"/>
+  </symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m9 18 6-6-6-6"/>
+  </symbol>
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/>
+  </symbol>
+  <symbol id="i-analytics" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+  </symbol>
+  <symbol id="i-wand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m15 4 5 5L8 21l-5-5Z"/><path d="m14 5 5 5"/><path d="m6 3 .5 1.5L8 5l-1.5.5L6 7l-.5-1.5L4 5l1.5-.5Z"/><path d="m19 15 .5 1.5L21 17l-1.5.5L19 19l-.5-1.5L17 17l1.5-.5Z"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m5 12 4 4L19 6"/>
+  </symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m6 6 12 12M18 6 6 18"/>
+  </symbol>
+  <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>
+  </symbol>
+  <symbol id="i-zoom-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/>
+  </symbol>
+  <symbol id="i-zoom-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6"/>
+  </symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+  </symbol>
+  <symbol id="i-database" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/>
+  </symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>
+  </symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/>
+  </symbol>
+  <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15M15 6v15"/>
+  </symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m13 2-9 12h8l-1 8 9-12h-8Z"/>
+  </symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14M13 6l6 6-6 6"/>
+  </symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 12H5M11 18l-6-6 6-6"/>
+  </symbol>
+  <symbol id="i-package-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m21 8-9 5-9-5"/><path d="M3 8l9-5 9 5v8l-9 5-9-5Z"/><path d="M12 13v8"/><path d="m8 15 2 2 4-4"/>
+  </symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14.7 6.3a4 4 0 0 0-5-5L12 3.6 9.6 6 7.3 3.7a4 4 0 0 0 5 5L5 16l3 3 7.7-7.7a4 4 0 0 0 5-5L18.4 8.6 16 6.2Z"/>
+  </symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 12h4l2-7 4 14 2-7h6"/>
+  </symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>
+  </symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+  </symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17.5 19H6a4 4 0 1 1 .7-7.9A6 6 0 0 1 18.2 9 5 5 0 0 1 17.5 19Z"/>
+  </symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/>
+  </symbol>
+  <symbol id="i-file-json" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M10 13a2 2 0 0 0-2 2v1a2 2 0 0 1-2 2 2 2 0 0 1 2 2v1M14 13a2 2 0 0 1 2 2v1a2 2 0 0 0 2 2 2 2 0 0 0-2 2v1"/>
+  </symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 11a8 8 0 1 0 2 5"/><path d="M20 4v7h-7"/>
+  </symbol>
+  <symbol id="i-more" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>
+  </symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>
+  </symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3" cy="6" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="3" cy="18" r="1"/>
+  </symbol>
+</svg>
+
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><svg class="icon icon-lg"><use href="#i-moon"></use></svg></span>
+        <span class="brand-copy"><span class="brand-name">MOON COURIER</span><span class="brand-subtitle">Delivery Resolution</span></span>
+      </a>
+      <div class="topbar-center"><span class="status-pill red"><span class="status-dot"></span>Incident persisted</span></div>
+      <div class="topbar-right">
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a class="nav-link is-active" href="index.html"><svg class="icon icon-sm"><use href="#i-map"></use></svg><span>Mission</span></a>
+          <a class="nav-link" href="scenario.html"><svg class="icon icon-sm"><use href="#i-wand"></use></svg><span>Architect</span></a>
+          <a class="nav-link" href="analytics.html"><svg class="icon icon-sm"><use href="#i-analytics"></use></svg><span>Debrief</span></a>
+        </nav>
+        <button class="btn btn-soft-cyan" type="button" data-action="toggle-provider"><svg class="icon icon-sm"><use data-provider-use href="#i-cloud"></use></svg><span data-provider-label>Cloud Flash</span></button>
+      </div>
+    </header>
+
+    <main class="result-page">
+      <div class="result-page-map" aria-hidden="true">
+        <div class="map-canvas">
+          <svg class="map-art" viewBox="0 0 960 600" preserveAspectRatio="none">
+            <defs><pattern id="failureGrid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="rgba(154,170,183,.1)" stroke-width="1"/></pattern></defs>
+            <rect width="960" height="600" fill="url(#failureGrid)" opacity=".5"/>
+            <circle class="map-crater" cx="174" cy="150" r="74"/><circle class="map-crater-inner" cx="174" cy="150" r="55"/>
+            <circle class="map-crater" cx="726" cy="384" r="98"/><circle class="map-crater-inner" cx="726" cy="384" r="73"/>
+            <polygon class="risk-zone red" points="620,260 868,218 930,355 802,478 631,407 570,326"/>
+            <path class="map-route is-risk" d="M210 470C363 417 489 397 618 372S765 318 875 286"/>
+          </svg>
+          <button class="map-marker base" style="left:21.9%;top:78.3%"><span class="map-marker-ring"><svg class="icon icon-sm"><use href="#i-home"></use></svg></span><span class="marker-label">Asteria Base</span></button>
+          <button class="map-marker is-critical" style="left:91.1%;top:47.7%"><span class="map-marker-ring"><svg class="icon icon-sm"><use href="#i-alert"></use></svg></span><span class="marker-label">Incident · Sector E2</span></button>
+        </div>
+      </div>
+
+      <article class="result-page-card failure">
+        <header class="result-page-header">
+          <div class="result-page-symbol"><svg class="icon icon-lg"><use href="#i-alert"></use></svg></div>
+          <div>
+            <span class="result-badge"><svg class="icon icon-sm"><use href="#i-x"></use></svg>Delivery failed</span>
+            <h1>BIO-014 cargo damaged in Sector E2</h1>
+            <p>SCOUT-2 entered a high-risk corridor and failed the seeded incident check. The event chain, penalties and rover state were persisted.</p>
+          </div>
+          <span class="status-pill red mono">15:18:27</span>
+        </header>
+
+        <div class="result-page-main">
+          <section class="result-route-mini" aria-label="Failed route">
+            <div class="map-canvas">
+              <svg class="map-art" viewBox="0 0 520 260" preserveAspectRatio="none" aria-hidden="true">
+                <defs><pattern id="miniFailureGrid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="rgba(154,170,183,.1)"/></pattern></defs>
+                <rect width="520" height="260" fill="url(#miniFailureGrid)" opacity=".5"/>
+                <circle class="map-crater" cx="390" cy="175" r="58"/><circle class="map-crater-inner" cx="390" cy="175" r="41"/>
+                <polygon class="risk-zone red" points="245,42 480,26 505,165 408,238 273,196 220,115"/>
+                <path class="map-route is-risk" d="M70 220C176 185 265 163 330 132S407 101 462 82"/>
+                <path d="M333 132 352 151M352 132 333 151" stroke="#ff5c73" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+              <button class="map-marker base" style="left:13.5%;top:84.5%"><span class="map-marker-ring"><svg class="icon icon-sm"><use href="#i-home"></use></svg></span></button>
+              <button class="map-marker is-critical" style="left:66%;top:54%"><span class="map-marker-ring"><svg class="icon icon-sm"><use href="#i-alert"></use></svg></span></button>
+              <div class="map-telemetry">
+                <div class="map-telemetry-item"><span>Distance</span><span>8.9 / 11.5 km</span></div>
+                <div class="map-telemetry-item"><span>Risk roll</span><span class="text-red">Failed</span></div>
+                <div class="map-telemetry-item"><span>Battery</span><span>31%</span></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="result-economy">
+            <div class="result-summary-grid">
+              <div class="result-stat"><div class="result-stat-label">Route progress</div><div class="result-stat-value">77%</div></div>
+              <div class="result-stat"><div class="result-stat-label">Incident risk</div><div class="result-stat-value text-red">28%</div></div>
+              <div class="result-stat"><div class="result-stat-label">Battery left</div><div class="result-stat-value">31%</div></div>
+              <div class="result-stat"><div class="result-stat-label">Rover status</div><div class="result-stat-value text-amber">Repair</div></div>
+            </div>
+            <div class="result-breakdown">
+              <div class="breakdown-row"><span>Expected reward</span><strong>+310 CR</strong></div>
+              <div class="breakdown-row"><span>Failure penalty</span><strong class="text-red">−120 CR</strong></div>
+              <div class="breakdown-row"><span>Repair cost</span><strong class="text-red">−75 CR</strong></div>
+              <div class="breakdown-row total"><span>Net result</span><strong>−195 CR</strong></div>
+            </div>
+          </section>
+        </div>
+
+        <section class="ai-debrief">
+          <div class="ai-debrief-header"><svg class="icon icon-sm"><use href="#i-sparkles"></use></svg>Mission Control debrief · <span data-provider-label="long">Cloud Flash · Online</span></div>
+          <p>The dispatch was technically feasible but economically risky. A six-minute detour would have reduced route risk from 28% to 9% and raised estimated success probability from 72% to 91%. The recommended policy change is to require the safer route for fragile BIO cargo.</p>
+        </section>
+
+        <footer class="result-page-actions">
+          <button class="btn btn-ghost" type="button" data-toast-title="Alternative simulated" data-toast-copy="The low-risk route adds 6 minutes and improves estimated success probability by 19 points." data-toast-tone="violet"><svg class="icon icon-sm"><use href="#i-activity"></use></svg>Simulate alternative</button>
+          <a class="btn btn-danger" href="index.html"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg>Return to mission</a>
+        </footer>
+      </article>
+    </main>
+  </div>
+
+  <script src="js/common.js"></script>
+</body>
+</html>

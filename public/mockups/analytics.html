@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081018">
+  <title>Moon Courier Crisis — Mission Debrief</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+  </symbol>
+  <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m21 8-9 5-9-5"/><path d="M3 8l9-5 9 5v8l-9 5-9-5Z"/><path d="M12 13v8"/>
+  </symbol>
+  <symbol id="i-rover" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 14h12l2 3H4l2-3Z"/><path d="M8 14V9h8v5"/><path d="M10 9V6h4v3"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><path d="M4 17h16"/>
+  </symbol>
+  <symbol id="i-battery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="6" width="18" height="12" rx="2"/><path d="M22 10v4"/><path d="M6 10h7"/>
+  </symbol>
+  <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h4a4 4 0 0 0 4-4v-4a4 4 0 0 0-4-4H8"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
+  </symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10.3 2.9 1.8 17a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 2.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>
+  </symbol>
+  <symbol id="i-credits" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M16 8.5A5 5 0 1 0 16 15.5"/><path d="M9 12h6"/>
+  </symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m12 3-1.1 3.2a2 2 0 0 1-1.2 1.2L6.5 8.5l3.2 1.1a2 2 0 0 1 1.2 1.2L12 14l1.1-3.2a2 2 0 0 1 1.2-1.2l3.2-1.1-3.2-1.1a2 2 0 0 1-1.2-1.2Z"/><path d="m19 15-.6 1.7a1.2 1.2 0 0 1-.7.7L16 18l1.7.6a1.2 1.2 0 0 1 .7.7L19 21l.6-1.7a1.2 1.2 0 0 1 .7-.7L22 18l-1.7-.6a1.2 1.2 0 0 1-.7-.7Z"/><path d="m5 2-.5 1.4a1 1 0 0 1-.6.6L2.5 4.5l1.4.5a1 1 0 0 1 .6.6L5 7l.5-1.4a1 1 0 0 1 .6-.6l1.4-.5L6.1 4a1 1 0 0 1-.6-.6Z"/>
+  </symbol>
+  <symbol id="i-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/>
+  </symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m7 4 13 8-13 8Z"/>
+  </symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 5v14M16 5v14"/>
+  </symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m12 2 9 5-9 5-9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/>
+  </symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>
+  </symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 5h16M7 12h10M10 19h4"/>
+  </symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m9 18 6-6-6-6"/>
+  </symbol>
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/>
+  </symbol>
+  <symbol id="i-analytics" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+  </symbol>
+  <symbol id="i-wand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m15 4 5 5L8 21l-5-5Z"/><path d="m14 5 5 5"/><path d="m6 3 .5 1.5L8 5l-1.5.5L6 7l-.5-1.5L4 5l1.5-.5Z"/><path d="m19 15 .5 1.5L21 17l-1.5.5L19 19l-.5-1.5L17 17l1.5-.5Z"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m5 12 4 4L19 6"/>
+  </symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m6 6 12 12M18 6 6 18"/>
+  </symbol>
+  <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>
+  </symbol>
+  <symbol id="i-zoom-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/>
+  </symbol>
+  <symbol id="i-zoom-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6"/>
+  </symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+  </symbol>
+  <symbol id="i-database" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/>
+  </symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>
+  </symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/>
+  </symbol>
+  <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15M15 6v15"/>
+  </symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m13 2-9 12h8l-1 8 9-12h-8Z"/>
+  </symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14M13 6l6 6-6 6"/>
+  </symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 12H5M11 18l-6-6 6-6"/>
+  </symbol>
+  <symbol id="i-package-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m21 8-9 5-9-5"/><path d="M3 8l9-5 9 5v8l-9 5-9-5Z"/><path d="M12 13v8"/><path d="m8 15 2 2 4-4"/>
+  </symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14.7 6.3a4 4 0 0 0-5-5L12 3.6 9.6 6 7.3 3.7a4 4 0 0 0 5 5L5 16l3 3 7.7-7.7a4 4 0 0 0 5-5L18.4 8.6 16 6.2Z"/>
+  </symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 12h4l2-7 4 14 2-7h6"/>
+  </symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>
+  </symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+  </symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17.5 19H6a4 4 0 1 1 .7-7.9A6 6 0 0 1 18.2 9 5 5 0 0 1 17.5 19Z"/>
+  </symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/>
+  </symbol>
+  <symbol id="i-file-json" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M10 13a2 2 0 0 0-2 2v1a2 2 0 0 1-2 2 2 2 0 0 1 2 2v1M14 13a2 2 0 0 1 2 2v1a2 2 0 0 0 2 2 2 2 0 0 0-2 2v1"/>
+  </symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 11a8 8 0 1 0 2 5"/><path d="M20 4v7h-7"/>
+  </symbol>
+  <symbol id="i-more" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>
+  </symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>
+  </symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3" cy="6" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="3" cy="18" r="1"/>
+  </symbol>
+</svg>
+
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Moon Courier Mission Control">
+        <span class="brand-mark"><svg class="icon icon-lg"><use href="#i-moon"></use></svg></span>
+        <span class="brand-copy">
+          <span class="brand-name">MOON COURIER</span>
+          <span class="brand-subtitle">Mission Debrief · Shackleton Relief</span>
+        </span>
+      </a>
+
+      <div class="topbar-center">
+        <span class="status-pill"><svg class="icon icon-sm"><use href="#i-database"></use></svg>128 events</span>
+        <span class="status-pill violet"><svg class="icon icon-sm"><use href="#i-activity"></use></svg>500 seeded runs</span>
+      </div>
+
+      <div class="topbar-right">
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a class="nav-link" href="index.html"><svg class="icon icon-sm"><use href="#i-map"></use></svg><span>Mission</span></a>
+          <a class="nav-link" href="scenario.html"><svg class="icon icon-sm"><use href="#i-wand"></use></svg><span>Architect</span></a>
+          <a class="nav-link is-active" href="analytics.html" aria-current="page"><svg class="icon icon-sm"><use href="#i-analytics"></use></svg><span>Debrief</span></a>
+        </nav>
+        <button class="btn btn-soft-cyan" type="button" data-action="toggle-provider" title="Switch AI provider">
+          <svg class="icon icon-sm"><use data-provider-use href="#i-cloud"></use></svg>
+          <span data-provider-label>Cloud Flash</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <div class="page-heading analytics-page">
+        <div class="page-heading-copy">
+          <div class="eyebrow"><svg class="icon icon-sm"><use href="#i-analytics"></use></svg> Mission Debrief</div>
+          <h1 class="page-title">Operational performance, explained by evidence.</h1>
+          <p class="page-description">Every insight is grounded in saved events or seeded counterfactual simulations. The AI summarizes the evidence; deterministic tools produce the numbers.</p>
+        </div>
+        <div class="page-heading-actions">
+          <button class="btn btn-ghost" type="button" data-toast-title="Report exported" data-toast-copy="The mission summary was prepared as a portable JSON report."><svg class="icon icon-sm"><use href="#i-file-json"></use></svg>Export report</button>
+          <a class="btn" href="index.html"><svg class="icon icon-sm"><use href="#i-arrow-left"></use></svg>Back to mission</a>
+        </div>
+      </div>
+
+      <section class="analytics-page">
+        <div class="analytics-toolbar">
+          <div class="analytics-context">
+            <strong>Shackleton Relief</strong>
+            <span>·</span>
+            <span>Day 1–7</span>
+            <span>·</span>
+            <span class="text-mint">Mission survived</span>
+          </div>
+          <div class="segmented" aria-label="Analytics range">
+            <button class="is-active" type="button" data-range="mission">Mission</button>
+            <button type="button" data-range="day">Day 4</button>
+            <button type="button" data-range="shift">Current shift</button>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <article class="kpi-card">
+            <div class="kpi-top"><span class="kpi-label">Total net profit</span><span class="kpi-icon text-mint"><svg class="icon icon-sm"><use href="#i-credits"></use></svg></span></div>
+            <div class="kpi-value text-mint" id="kpiProfit">+2 840 CR</div>
+            <div class="kpi-foot"><span class="kpi-delta">+12.4%</span><span>vs. baseline policy</span></div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-top"><span class="kpi-label">Completion rate</span><span class="kpi-icon"><svg class="icon icon-sm"><use href="#i-package-check"></use></svg></span></div>
+            <div class="kpi-value" id="kpiCompletion">78%</div>
+            <div class="kpi-foot"><span>9 of 12 accepted orders</span></div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-top"><span class="kpi-label">Failed deliveries</span><span class="kpi-icon text-red" style="background:var(--red-soft)"><svg class="icon icon-sm"><use href="#i-alert"></use></svg></span></div>
+            <div class="kpi-value text-red" id="kpiFailures">3</div>
+            <div class="kpi-foot"><span class="kpi-delta negative">2 capacity · 1 risk event</span></div>
+          </article>
+          <article class="kpi-card">
+            <div class="kpi-top"><span class="kpi-label">Average utilization</span><span class="kpi-icon text-violet" style="background:var(--violet-soft)"><svg class="icon icon-sm"><use href="#i-rover"></use></svg></span></div>
+            <div class="kpi-value" id="kpiUtilization">64%</div>
+            <div class="kpi-foot"><span>ATLAS-1 peaked at 82%</span></div>
+          </article>
+        </div>
+
+        <div class="analytics-grid-primary">
+          <section class="panel chart-panel">
+            <div class="panel-header">
+              <div class="panel-title-group"><h2 class="panel-title">Economy over time</h2><div class="panel-subtitle">Balance, earned rewards and operating losses</div></div>
+              <div class="chart-legend">
+                <span class="legend-item"><span class="line-dot"></span>Balance</span>
+                <span class="legend-item"><span class="line-dot amber"></span>Costs</span>
+                <span class="legend-item"><span class="line-dot violet"></span>Forecast band</span>
+              </div>
+            </div>
+            <div class="chart-body">
+              <svg viewBox="0 0 900 270" preserveAspectRatio="none" role="img" aria-label="Economy line chart">
+                <defs>
+                  <linearGradient id="balanceFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#42d9ff" stop-opacity=".2"/>
+                    <stop offset="1" stop-color="#42d9ff" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="forecastFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#a98bff" stop-opacity=".13"/>
+                    <stop offset="1" stop-color="#a98bff" stop-opacity=".02"/>
+                  </linearGradient>
+                </defs>
+                <g stroke="rgba(154,170,183,.11)" stroke-width="1">
+                  <path d="M58 25H880M58 78H880M58 131H880M58 184H880M58 237H880"/>
+                  <path d="M58 25V237M175 25V237M292 25V237M409 25V237M526 25V237M643 25V237M760 25V237M880 25V237"/>
+                </g>
+                <g fill="rgba(154,170,183,.55)" font-family="monospace" font-size="10">
+                  <text x="8" y="29">5 000</text><text x="8" y="82">4 000</text><text x="8" y="135">3 000</text><text x="8" y="188">2 000</text><text x="8" y="241">1 000</text>
+                  <text x="54" y="260">D1</text><text x="171" y="260">D2</text><text x="288" y="260">D3</text><text x="405" y="260">D4</text><text x="522" y="260">D5</text><text x="639" y="260">D6</text><text x="756" y="260">D7</text>
+                </g>
+                <path d="M58 193C117 185 145 170 175 165S244 171 292 152 358 126 409 151 470 140 526 111 592 101 643 88 708 70 760 67 833 55 880 48V75C831 83 812 93 760 98 711 104 688 115 643 121 592 129 574 139 526 144 477 151 450 166 409 178 361 192 331 188 292 187 246 185 218 197 175 198 126 198 102 205 58 213Z" fill="url(#forecastFill)"/>
+                <path id="balanceArea" d="M58 210C104 202 140 192 175 188S246 198 292 181 367 145 409 172 479 159 526 124 596 111 643 96 708 81 760 78 829 62 880 55V237H58Z" fill="url(#balanceFill)"/>
+                <path id="balanceLine" d="M58 210C104 202 140 192 175 188S246 198 292 181 367 145 409 172 479 159 526 124 596 111 643 96 708 81 760 78 829 62 880 55" fill="none" stroke="#42d9ff" stroke-width="3.2" stroke-linecap="round"/>
+                <path d="M58 231C111 225 138 218 175 221S247 211 292 216 361 202 409 197 475 202 526 187 590 190 643 177 710 180 760 164 828 173 880 151" fill="none" stroke="#ffb653" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
+                <path d="M409 25V237" stroke="rgba(255,92,115,.36)" stroke-width="1.5" stroke-dasharray="5 6"/>
+                <circle cx="409" cy="172" r="5" fill="#ff5c73"/><rect x="429" y="132" width="136" height="42" rx="8" fill="#142330" stroke="rgba(255,92,115,.28)"/><text x="440" y="149" fill="#ff8b9d" font-size="10" font-family="system-ui">DAY 4 · MEDICAL SURGE</text><text x="440" y="164" fill="#9aaab7" font-size="9" font-family="system-ui">Profit temporarily falls 18%</text>
+              </svg>
+            </div>
+          </section>
+
+          <aside class="panel insight-panel">
+            <div class="panel-header">
+              <div class="panel-title-group"><h2 class="panel-title">AI operational insight</h2><div class="panel-subtitle">Grounded in events and simulations</div></div>
+              <span class="status-pill violet"><svg class="icon icon-sm"><use href="#i-sparkles"></use></svg>Evidence-linked</span>
+            </div>
+            <div class="ai-insight-body">
+              <div class="insight-score">
+                <div class="insight-score-ring">82%</div>
+                <div class="insight-score-copy"><strong>High-confidence diagnosis</strong><span>Based on 128 events and 500 seeded runs</span></div>
+              </div>
+              <div class="insight-text" id="insightText">
+                The main bottleneck was <strong>heavy-load capacity</strong>, not battery availability. Adding one heavy rover raises projected mission survival from <strong>61% to 87%</strong>; faster charging raises it only to 69%.
+              </div>
+              <div class="evidence-list" id="evidenceList">
+                <div class="evidence-item"><span class="evidence-number">01</span><span class="evidence-copy"><strong>9 orders rejected by capacity</strong><span>72% occurred during the Day 4 demand spike</span></span></div>
+                <div class="evidence-item"><span class="evidence-number">02</span><span class="evidence-copy"><strong>Battery idle time remained available</strong><span>Fleet-wide charging queue never exceeded one rover</span></span></div>
+                <div class="evidence-item"><span class="evidence-number">03</span><span class="evidence-copy"><strong>Heavy-rover scenario dominates</strong><span>+26 points survival · +1 140 CR median net</span></span></div>
+              </div>
+              <div class="insight-actions">
+                <button class="btn btn-soft-violet" id="runSimulationButton" type="button"><svg class="icon icon-sm"><use href="#i-activity"></use></svg>Run simulation</button>
+                <button class="btn btn-ghost" id="toggleEvidenceButton" type="button">Hide evidence</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="analytics-grid-secondary">
+          <section class="panel">
+            <div class="panel-header"><div class="panel-title-group"><h2 class="panel-title">Failure reasons</h2><div class="panel-subtitle">Blocked and failed deliveries</div></div><span class="status-pill red">13 events</span></div>
+            <div class="bar-chart">
+              <div class="bar-row"><span class="bar-label">Capacity exceeded</span><span class="bar-track"><span class="bar-fill" style="--value:100%"></span></span><span class="bar-value">9</span></div>
+              <div class="bar-row"><span class="bar-label">Risk event</span><span class="bar-track"><span class="bar-fill" style="--value:44%"></span></span><span class="bar-value">4</span></div>
+              <div class="bar-row"><span class="bar-label">Battery deficit</span><span class="bar-track"><span class="bar-fill" style="--value:33%"></span></span><span class="bar-value">3</span></div>
+              <div class="bar-row"><span class="bar-label">Deadline missed</span><span class="bar-track"><span class="bar-fill" style="--value:22%"></span></span><span class="bar-value">2</span></div>
+              <div class="bar-row"><span class="bar-label">Rover unavailable</span><span class="bar-track"><span class="bar-fill" style="--value:11%"></span></span><span class="bar-value">1</span></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header"><div class="panel-title-group"><h2 class="panel-title">Rover utilization</h2><div class="panel-subtitle">Moving, waiting, charging and repair time</div></div><span class="status-pill cyan">Fleet average 64%</span></div>
+            <div class="utilization-body">
+              <div class="util-row">
+                <div class="util-heading"><strong>ATLAS-1</strong><span>82% active</span></div>
+                <div class="stacked-bar"><span class="stacked-segment moving" style="width:64%"></span><span class="stacked-segment waiting" style="width:18%"></span><span class="stacked-segment charging" style="width:15%"></span><span class="stacked-segment repair" style="width:3%"></span></div>
+              </div>
+              <div class="util-row">
+                <div class="util-heading"><strong>SCOUT-2</strong><span>58% active</span></div>
+                <div class="stacked-bar"><span class="stacked-segment moving" style="width:48%"></span><span class="stacked-segment waiting" style="width:34%"></span><span class="stacked-segment charging" style="width:18%"></span></div>
+              </div>
+              <div class="util-row">
+                <div class="util-heading"><strong>MULE-3</strong><span>51% active</span></div>
+                <div class="stacked-bar"><span class="stacked-segment moving" style="width:39%"></span><span class="stacked-segment waiting" style="width:25%"></span><span class="stacked-segment charging" style="width:31%"></span><span class="stacked-segment repair" style="width:5%"></span></div>
+              </div>
+              <div class="util-legend"><span class="legend-item"><span class="legend-swatch"></span>Moving</span><span class="legend-item"><span class="legend-swatch" style="background:rgba(154,170,183,.4)"></span>Waiting</span><span class="legend-item"><span class="legend-swatch" style="background:var(--violet)"></span>Charging</span><span class="legend-item"><span class="legend-swatch red"></span>Repair</span></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header"><div class="panel-title-group"><h2 class="panel-title">Counterfactual comparison</h2><div class="panel-subtitle">Same scenario · 500 seeded runs each</div></div><span class="status-pill violet">Monte Carlo</span></div>
+            <div class="comparison-body" id="comparisonBody">
+              <div class="comparison-card">
+                <div class="comparison-heading"><strong>Current fleet</strong><span class="status-pill amber">Baseline</span></div>
+                <div class="comparison-metrics"><div class="comparison-metric"><span>Survival</span><span>61%</span></div><div class="comparison-metric"><span>Median net</span><span>+2 640</span></div><div class="comparison-metric"><span>P10 loss</span><span class="text-red">-480</span></div></div>
+              </div>
+              <div class="comparison-card is-best" id="heavyRoverCard">
+                <div class="comparison-heading"><strong>+1 heavy rover</strong><span class="status-pill mint">Best</span></div>
+                <div class="comparison-metrics"><div class="comparison-metric"><span>Survival</span><span class="text-mint" id="heavySurvival">87%</span></div><div class="comparison-metric"><span>Median net</span><span class="text-mint" id="heavyNet">+3 780</span></div><div class="comparison-metric"><span>P10 loss</span><span>-90</span></div></div>
+              </div>
+              <div class="comparison-card">
+                <div class="comparison-heading"><strong>+30% charging</strong><span class="status-pill">Alternative</span></div>
+                <div class="comparison-metrics"><div class="comparison-metric"><span>Survival</span><span>69%</span></div><div class="comparison-metric"><span>Median net</span><span>+2 980</span></div><div class="comparison-metric"><span>P10 loss</span><span class="text-red">-310</span></div></div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <form class="analytics-query" id="analyticsQueryForm">
+          <div class="analytics-query-icon"><svg class="icon"><use href="#i-sparkles"></use></svg></div>
+          <input id="analyticsQueryInput" type="text" placeholder="Ask: Why did profit fall after Day 3? Which rover is the bottleneck?">
+          <button class="btn btn-primary" type="submit"><svg class="icon icon-sm"><use href="#i-send"></use></svg>Ask Mission Control</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

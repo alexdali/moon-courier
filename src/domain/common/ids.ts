@@ -1,0 +1,12 @@
+export type ScenarioId = string;
+export type MissionId = string;
+export type ZoneId = string;
+export type NodeId = string;
+export type EdgeId = string;
+export type RoverId = string;
+export type OrderId = string;
+export type DeliveryId = string;
+export type EventId = string;
+export type EconomyEntryId = string;
+export type SimulationRunId = string;
+export type AiRunId = string;
