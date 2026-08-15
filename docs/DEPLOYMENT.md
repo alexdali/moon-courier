@@ -104,6 +104,11 @@ docker compose start web
 
 Префикс volume зависит от имени Compose project; проверьте его через `docker volume ls`.
 
+Для регулярного консистентного backup на одном VPS установите
+`deploy/backup-sqlite.sh` и приложенные systemd units. Скрипт использует
+SQLite `.backup`, проверяет gzip-архив и по умолчанию хранит копии 14 дней.
+Точные команды и структура каталогов приведены в `deploy/README.md`.
+
 ## 7. Zero-downtime limitation
 
 SQLite + one process means simple restart deployment. For multiple replicas migrate to PostgreSQL first.

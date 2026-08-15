@@ -1,0 +1,13 @@
+[Unit]
+Description=Back up the Moon Courier SQLite database
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/backup-moon-courier
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/home/deploy/projects/moon-courier/backups
+
