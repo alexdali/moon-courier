@@ -5,7 +5,7 @@ import { useI18n } from '@/i18n/i18n-provider';
 export function AboutContent() {
   const { locale, t } = useI18n();
   const flow = locale === 'ru'
-    ? `Запрос человека\n  ↓\nDeepSeek Mission Control\n  ↓ вызов инструмента\nДетерминированный планировщик / симулятор\n  ↓ проверенные данные\nОбъяснение DeepSeek\n  ↓ сбой\nРезерв Luna`
+    ? `Запрос человека\n  ↓\nЦентр управления DeepSeek\n  ↓ вызов инструмента\nДетерминированный планировщик / симулятор\n  ↓ проверенные данные\nОбъяснение DeepSeek\n  ↓ сбой\nРезервная модель Luna`
     : `Human intent\n  ↓\nDeepSeek Mission Control\n  ↓ tool request\nDeterministic planner / simulator\n  ↓ verified data\nDeepSeek explanation\n  ↓ failure\nLuna fallback`;
   return <div className="about-grid">
     <section className="panel"><h2>{t('Runtime flow')}</h2><pre>{flow}</pre></section>

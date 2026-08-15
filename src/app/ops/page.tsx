@@ -1,10 +1,8 @@
-import type { Metadata } from 'next';
 import { PageHeading } from '@/components/layout/page-heading';
 import { SiteHeader } from '@/components/layout/site-header';
 import { OpsDashboard } from '@/components/ops/ops-dashboard';
 import { ensureDemoInitialized } from '@/infrastructure/composition/app-container';
 
-export const metadata: Metadata = { title: 'Operations' };
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 

@@ -1,10 +1,8 @@
-import type { Metadata } from 'next';
 import { AnalyticsDashboard } from '@/components/analytics/analytics-dashboard';
 import { PageHeading } from '@/components/layout/page-heading';
 import { SiteHeader } from '@/components/layout/site-header';
 import { ensureDemoInitialized } from '@/infrastructure/composition/app-container';
 
-export const metadata: Metadata = { title: 'Mission Debrief' };
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 

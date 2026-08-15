@@ -4,10 +4,12 @@ import { cookies } from 'next/headers';
 import '@/app/globals.css';
 import { I18nProvider } from '@/i18n/i18n-provider';
 
-export const metadata: Metadata = {
-  title: { default: 'Moon Courier Crisis', template: '%s · Moon Courier Crisis' },
-  description: 'Deterministic lunar logistics simulator with AI Mission Control.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = (await cookies()).get('moon-courier-locale')?.value === 'en' ? 'en' : 'ru';
+  return locale === 'ru'
+    ? { title: 'Лунный курьер: кризис', description: 'Детерминированный симулятор лунной логистики с центром управления на основе ИИ.' }
+    : { title: 'Moon Courier Crisis', description: 'Deterministic lunar logistics simulator with AI Mission Control.' };
+}
 
 export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   const savedLocale = (await cookies()).get('moon-courier-locale')?.value;

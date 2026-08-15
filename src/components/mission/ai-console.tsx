@@ -48,7 +48,7 @@ export function AiConsole() {
     {response ? <article className="ai-response">
       <div className="ai-response__meta"><span>{response.model ?? t('Offline rules')}</span>{response.fallbackUsed ? <StatusPill tone="violet">{t('Luna fallback')}</StatusPill> : null}</div>
       <p>{t(response.answer)}</p>
-      {response.toolCalls.length ? <details><summary>{t('Used')} {response.toolCalls.length} {t(response.toolCalls.length === 1 ? 'deterministic tool' : 'deterministic tools')}</summary>{response.toolCalls.map((call, index) => <div className="tool-call" key={`${call.name}-${index}`}><code>{call.name}</code><span>{t(call.resultSummary)}</span></div>)}</details> : null}
+      {response.toolCalls.length ? <details><summary>{t('Used')} {response.toolCalls.length} {t(response.toolCalls.length === 1 ? 'deterministic tool' : 'deterministic tools')}</summary>{response.toolCalls.map((call, index) => <div className="tool-call" key={`${call.name}-${index}`}><code>{t(call.name)}</code><span>{t(call.resultSummary)}</span></div>)}</details> : null}
       {response.suggestedSelection ? <button type="button" className="secondary-action" onClick={applySelection}>{t('Apply recommendation')} <Icon name="arrow" size={14}/></button> : null}
     </article> : <div className="ai-placeholder"><Icon name="spark" size={22}/><p>{t('Ask for a plan, blocker explanation or counterfactual simulation.')}</p></div>}
     <form className="ai-input" onSubmit={onSubmit}><input value={message} onChange={(event: ChangeEvent<HTMLInputElement>) => setMessage(event.target.value)} placeholder={t('Ask Mission Control…')}/><button type="submit" disabled={busy === 'ai' || message.trim().length < 2}>{busy === 'ai' ? '…' : <Icon name="arrow" size={17}/>}</button></form>

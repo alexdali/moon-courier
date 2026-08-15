@@ -1,6 +1,6 @@
 # Validation report
 
-Дата актуальной проверки: **2026-08-15**.
+Дата актуальной проверки: **2026-08-16**.
 
 Документ фиксирует только фактически выполненные проверки рабочего репозитория. Наличие файла или команды не считается доказательством готовности без успешного запуска.
 
@@ -8,10 +8,10 @@
 
 Проверено в рабочем дереве:
 
-- 254 TypeScript/TSX-файла в `src`;
-- 35 файлов в `src/test`, из них 31 `*.test.ts` / `*.spec.ts`;
-- 28 Vitest-файлов и 3 Playwright spec-файла;
-- 44 Markdown-документа, включая evidence report и автоматически поддерживаемые Next.js agent rules;
+- 256 TypeScript/TSX-файлов в `src`;
+- 37 файлов в `src/test`, из них 33 `*.test.ts` / `*.spec.ts`;
+- 29 Vitest-файлов и 4 Playwright spec-файла;
+- 45 Markdown-документов, включая evidence report и автоматически поддерживаемые Next.js agent rules;
 - 3 SQL migration;
 - 4 актуальных скриншота интерфейса;
 - Dockerfile, Docker Compose и GitHub Actions CI.
@@ -28,16 +28,16 @@ npm run validate
 Результат:
 
 ```text
-Structure validation passed: 254 source files, no unresolved local imports.
+Structure validation passed: 256 source files, no unresolved local imports.
 SQL validation passed: 3 migrations, 18 tables.
 Domain validation: PASS.
-Syntax validation passed for 270 TypeScript/TSX files.
-Documentation links: PASS, 44 Markdown files / 57 local links.
+Syntax validation passed for 272 TypeScript/TSX files.
+Documentation links: PASS, 45 Markdown files / 57 local links.
 Static assets: PASS, 6 HTML files / 53 local references / 4 JS files.
-Secret scan: PASS, 301 text/config files, no credential patterns.
+Secret scan: PASS, 303 text/config files, no credential patterns.
 TypeScript: PASS.
 ESLint: PASS, 0 warnings.
-Vitest: 28 files passed, 37 tests passed.
+Vitest: 29 files passed, 44 tests passed.
 ```
 
 ## 3. Доменный сценарий
@@ -102,7 +102,7 @@ Health endpoint подтвердил доступность SQLite и конфи
 Выполнено в Chromium локально и повторно против Docker container:
 
 ```text
-5 passed
+8 passed
 ```
 
 Проверены:
@@ -114,6 +114,9 @@ Health endpoint подтвердил доступность SQLite и конфи
 - Scenario Architect и Analytics доступны;
 - интерфейс по умолчанию русский;
 - переключение `RU → EN → reload → RU` меняет интерфейс и сохраняет выбор.
+- на всех пяти страницах приложения отсутствуют известные англоязычные UI-надписи в русском режиме;
+- динамические статусы, ошибки, единицы измерения, названия заказов и сценарные подсказки локализованы;
+- английскими оставлены только собственные имена точек карты, роверов, моделей и технологических продуктов.
 
 ## 8. Визуальная проверка
 
@@ -126,7 +129,7 @@ screenshots/mission-debrief.png
 screenshots/ops.png
 ```
 
-Проверены layout 1440×900, русская локализация, навигация, карта, карточки, аналитика и Ops. Маркеры нескольких роверов/заказов на одном узле разнесены, чтобы не накладываться друг на друга.
+Проверены layout 1440×900, полная русская локализация, навигация, карта, карточки, аналитика и эксплуатационная панель. Маркеры нескольких роверов/заказов на одном узле разнесены, чтобы не накладываться друг на друга.
 
 ## 9. Docker / VPS path
 
@@ -153,11 +156,11 @@ docker build --tag moon-courier:verify .
 - deterministic degraded mode без API key;
 - ответ Mission Control на языке пользовательского запроса.
 
-Live-вызовы OpenRouter не выполнялись: секретного ключа в репозитории нет. Команды `verify:models` и `evaluate:ai` остаются owner-controlled платной проверкой.
+На VPS авторизация ключа OpenRouter и доступность обоих настроенных model ID подтверждены через API провайдера. Платные запросы с данными миссии не выполнялись без отдельного согласия на их передачу стороннему сервису.
 
 ## 11. Secret scan
 
-Реальные credential patterns не найдены. `.env` и SQLite-файлы исключены из Git/Docker context. Значения пользовательских секретов не читались и не сохранялись в отчёт.
+Реальные credential patterns не найдены. `.env` и SQLite-файлы исключены из Git/Docker context. Значения пользовательских секретов не выводились и не сохранялись в отчёт; проверка OpenRouter выполнялась только по HTTP-статусу авторизации и списку доступных моделей.
 
 ## 12. Итог
 
@@ -172,4 +175,4 @@ screenshots     PASS
 Docker build    PASS
 ```
 
-Единственная отдельная внешняя проверка — доступность и стоимость выбранных OpenRouter model IDs с пользовательским API key.
+Платная оценка качества AI-ответов остаётся отдельной проверкой, требующей явного согласия на передачу данных миссии в OpenRouter.

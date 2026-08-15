@@ -25,8 +25,8 @@ export function RoverCard({ rover }: { rover: Rover }) {
     <button type="button" className="rover-card__select" onClick={() => selectRover(rover.id)}>
       <span className="rover-card__head"><span className="rover-card__identity"><span className="rover-card__icon"><Icon name="rover" size={18}/></span><span><strong>{rover.code}</strong><small>{rover.name}</small></span></span><StatusPill tone={statusTone[rover.status]}>{t(rover.status)}</StatusPill></span>
       <ProgressBar value={rover.batteryPercent} tone={tone} label={`${rover.batteryPercent.toFixed(0)}% ${t('battery')}`}/>
-      <span className="rover-card__metrics"><span>{rover.capacityKg} kg {t('capacity')}</span><span>{rover.baseSpeedKph} km/h</span></span>
-      {capacityDeficit > 0 ? <span className="rover-card__warning"><Icon name="alert" size={13}/>{t('Capacity deficit')} {capacityDeficit} kg</span> : null}
+      <span className="rover-card__metrics"><span>{rover.capacityKg} {t('kg')} {t('capacity')}</span><span>{rover.baseSpeedKph} {t('km/h')}</span></span>
+      {capacityDeficit > 0 ? <span className="rover-card__warning"><Icon name="alert" size={13}/>{t('Capacity deficit')} {capacityDeficit} {t('kg')}</span> : null}
     </button>
     {repairAllowed ? <button type="button" className="rover-card__charge rover-card__charge--repair" disabled={busy !== null} onClick={() => void repair(rover.id)}>
       <Icon name="tool" size={13}/>{t('Repair rover')}
