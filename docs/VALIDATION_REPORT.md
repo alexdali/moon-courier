@@ -99,7 +99,7 @@ Health endpoint подтвердил доступность SQLite и конфи
 
 ## 7. End-to-end
 
-Выполнено в Chromium локально и повторно против Docker container:
+Выполнено в Chromium локально и повторно против публичного VPS `http://38.45.65.229`:
 
 ```text
 8 passed
@@ -139,9 +139,9 @@ screenshots/ops.png
 docker build --tag moon-courier:verify .
 ```
 
-Результат: образ `sha256:4b2fc5f56ce51a4cc62a0f75c73a414c8153d824c61b593e538378eb300aa4ce`, около 375 MB. Зависимости установлены воспроизводимо через `npm ci` из lock-файла; npm audit сообщил 0 vulnerabilities.
+Результат актуального VPS-развёртывания: образ `sha256:6439f9bdef2ad98ed372ae1660d8b22e0d068dec6f149c5acfba7288629a7df8`, около 138 MB. Зависимости установлены воспроизводимо через `npm ci` из lock-файла; npm audit сообщил 0 vulnerabilities.
 
-Контейнер запущен как непривилегированный `appuser`; внутри автоматически применены migration и seed SQLite. Против контейнера успешно повторены smoke и все 5 E2E. Одноразовый проверочный контейнер после теста остановлен.
+Контейнер запущен как непривилегированный `appuser`; внутри автоматически применены migration и seed SQLite. Контейнер имеет статус `healthy`, публичный HTTP возвращает 200. Против VPS успешно повторены smoke и все 8 E2E; после теста демонстрационная миссия сброшена и создана свежая резервная копия.
 
 ## 10. AI routing
 
@@ -169,8 +169,8 @@ Offline baseline готов к сдаче и развёртыванию из и�
 ```text
 validate        PASS
 build           PASS
-smoke           PASS local + Docker
-E2E             PASS local + Docker
+smoke           PASS local + VPS
+E2E             PASS local + VPS
 screenshots     PASS
 Docker build    PASS
 ```
