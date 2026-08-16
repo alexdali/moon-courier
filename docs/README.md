@@ -12,7 +12,8 @@
 8. [`FILE_MAP.md`](FILE_MAP.md) — назначение модульных файлов.
 9. [`TEST_STRATEGY.md`](TEST_STRATEGY.md) — unit, property, integration, E2E и live AI evaluation.
 10. [`ACCEPTANCE_MATRIX.md`](ACCEPTANCE_MATRIX.md) — покрытие требований задания.
-11. [`VALIDATION_REPORT.md`](VALIDATION_REPORT.md) — что было фактически проверено.
+11. [`SCREENSHOTS.md`](SCREENSHOTS.md) — скриншоты интерфейса.
+12. [`VALIDATION_REPORT.md`](VALIDATION_REPORT.md) — что было фактически проверено.
 
 Дополнительные документы:
 

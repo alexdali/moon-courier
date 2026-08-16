@@ -352,6 +352,7 @@ migrations/0001_initial.sql
 - [`docs/AI_PIPELINE.md`](docs/AI_PIPELINE.md) — DeepSeek → Luna;
 - [`docs/TEST_STRATEGY.md`](docs/TEST_STRATEGY.md) — стратегия качества;
 - [`docs/ACCEPTANCE_MATRIX.md`](docs/ACCEPTANCE_MATRIX.md) — соответствие заданию;
+- [`docs/SCREENSHOTS.md`](docs/SCREENSHOTS.md) — скриншоты интерфейса;
 - [`docs/VALIDATION_REPORT.md`](docs/VALIDATION_REPORT.md) — что проверено в поставляемом архиве.
 
 ---
