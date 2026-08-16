@@ -11,6 +11,7 @@ test.beforeEach(async ({ page, request }) => {
 });
 
 test('simple view keeps the first glance compact and reveals details on demand', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 600 });
   await expect(page.locator('html')).toHaveAttribute('data-mission-view', 'simple');
   await expect(page.locator('html')).toHaveAttribute('data-mission-theme', 'light');
   await expect(page.getByRole('group', { name: 'Версия интерфейса' }).getByRole('button', { name: 'Простая' })).toHaveAttribute('aria-pressed', 'true');
@@ -22,6 +23,7 @@ test('simple view keeps the first glance compact and reveals details on demand',
   await expect(rover.locator('.rover-card__metrics--primary > span')).toHaveCount(2);
   await expect(page.locator('.map-footer')).toHaveCount(0);
   await expect(page.getByText('ИИ центра управления')).toBeHidden();
+  await expect.poll(() => page.locator('.mission-simple-tools').evaluate((element) => element.getBoundingClientRect().bottom <= window.innerHeight)).toBe(true);
 
   await order.getByText('Подробнее').click();
   await expect(order).toContainText('Назначение');
@@ -35,9 +37,12 @@ test('simple view keeps the first glance compact and reveals details on demand',
   await assistant.getByRole('button', { name: 'Рекомендовать' }).click();
   await expect(assistant.locator('.ai-response')).toBeVisible({ timeout: 90_000 });
   await expect(assistant.locator('.ai-response')).toContainText('MED-017');
+  await assistant.locator('.ai-input').scrollIntoViewIfNeeded();
+  await expect(assistant.locator('.ai-input')).toBeInViewport();
 });
 
 test('layout and theme switches support every combination and persist independently', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 600 });
   await page.getByRole('group', { name: 'Цветовая тема' }).getByRole('button', { name: 'Тёмная' }).click();
   await expect(page.locator('html')).toHaveAttribute('data-mission-view', 'simple');
   await expect(page.locator('html')).toHaveAttribute('data-mission-theme', 'dark');
@@ -49,6 +54,7 @@ test('layout and theme switches support every combination and persist independen
   await expect(page.locator('html')).toHaveAttribute('data-mission-theme', 'dark');
   await expect(page.getByText('ИИ центра управления')).toBeVisible();
   await expect(page.getByText('Лента событий')).toBeVisible();
+  await expect(page.locator('.event-timeline')).toBeInViewport();
 
   await page.getByRole('group', { name: 'Цветовая тема' }).getByRole('button', { name: 'Светлая' }).click();
   await expect(page.locator('html')).toHaveAttribute('data-mission-view', 'detailed');
