@@ -121,14 +121,6 @@ Testing           Vitest + fast-check + Playwright
 Deployment        Docker / Docker Compose / single Node process
 ```
 
-Почему modular monolith, а не отдельные frontend/backend services:
-
-- за три дня важнее законченный vertical slice;
-- один deployment unit проще поднять проверяющему;
-- домен, данные и AI всё равно разделены контрактами;
-- SQLite не требует отдельной инфраструктуры;
-- позднее persistence и AI adapters можно заменить без переписывания правил.
-
 ---
 
 ## 4. Быстрый запуск
@@ -427,7 +419,7 @@ migrations/0001_initial.sql
 
 ---
 
-## 12. Что показать на защите
+## 12. Готовый сценарий для демонстрации
 
 1. Открыть Mission Control и показать карту, заказы, роверы и цель.
 2. Выбрать `HAB-021` + любой ровер: кнопка запуска заблокирована из-за грузоподъёмности.
