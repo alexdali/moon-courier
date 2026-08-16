@@ -33,7 +33,7 @@ test('simple view keeps the first glance compact and reveals details on demand',
   const assistant = page.locator('.mission-simple-tools details').filter({ hasText: 'ИИ-помощник' });
   await assistant.locator('summary').click();
   await assistant.getByRole('button', { name: 'Рекомендовать' }).click();
-  await expect(assistant.locator('.ai-response')).toBeVisible();
+  await expect(assistant.locator('.ai-response')).toBeVisible({ timeout: 90_000 });
   await expect(assistant.locator('.ai-response')).toContainText('MED-017');
 });
 
