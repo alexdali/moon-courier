@@ -45,9 +45,11 @@ test('Russian mission surface localizes dynamic domain content and units', async
   await expect(page.getByText('Силовой каркас жилого модуля')).toBeVisible();
   const text = await page.locator('body').innerText();
   expect(text).toContain('кг');
-  expect(text).toContain('км/ч');
   expect(text).toContain('кр.');
   expect(text).not.toMatch(/\b(?:kg|km\/h|CR)\b/);
+  const atlas = page.locator('.rover-card').filter({ hasText: 'ATLAS-1' });
+  await atlas.getByText('Подробнее').click();
+  await expect(atlas).toContainText('км/ч');
 });
 
 test('Russian scenario surface localizes presets and validation terminology', async ({ page }) => {

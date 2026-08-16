@@ -1,0 +1,37 @@
+import { expect, test } from '@playwright/test';
+
+test.beforeEach(async ({ page, request }) => {
+  await request.post('/api/mission/reset');
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.removeItem('moon-courier-view-mode'));
+  await page.reload();
+});
+
+test('simple view keeps the first glance compact and reveals details on demand', async ({ page }) => {
+  await expect(page.locator('html')).toHaveAttribute('data-mission-view', 'simple');
+  await expect(page.getByRole('group', { name: 'Версия интерфейса' }).getByRole('button', { name: 'Простая' })).toHaveAttribute('aria-pressed', 'true');
+
+  const order = page.locator('.order-card').filter({ hasText: 'MED-017' });
+  const rover = page.locator('.rover-card').filter({ hasText: 'ATLAS-1' });
+  await expect(order.locator('.order-card__metrics > span')).toHaveCount(2);
+  await expect(rover.locator('.rover-card__metrics--primary > span')).toHaveCount(2);
+  await expect(page.locator('.map-footer')).toHaveCount(0);
+  await expect(page.getByText('ИИ центра управления')).toBeHidden();
+
+  await order.getByText('Подробнее').click();
+  await expect(order).toContainText('Назначение');
+  await rover.getByText('Подробнее').click();
+  await expect(rover).toContainText('Скорость');
+  await page.getByRole('button', { name: 'Показать детали карты' }).click();
+  await expect(page.locator('.map-footer')).toBeVisible();
+});
+
+test('view switch keeps the detailed version and persists the choice', async ({ page }) => {
+  await page.getByRole('group', { name: 'Версия интерфейса' }).getByRole('button', { name: 'Подробная' }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-mission-view', 'detailed');
+  await expect(page.getByText('ИИ центра управления')).toBeVisible();
+  await expect(page.getByText('Лента событий')).toBeVisible();
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-mission-view', 'detailed');
+  await expect(page.getByRole('group', { name: 'Версия интерфейса' }).getByRole('button', { name: 'Подробная' })).toHaveAttribute('aria-pressed', 'true');
+});

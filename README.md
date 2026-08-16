@@ -49,9 +49,10 @@
 - Ops / технические доказательства;
 - экран About;
 - двуязычный интерфейс `RU / EN` с переключателем в верхней панели и сохранением выбора;
+- две сохраняемые версии Mission Control: светлая «Простая» с двумя ключевыми показателями и деталями по запросу, а также исходная «Подробная»;
 - AI Mission Control отвечает на языке запроса; быстрые подсказки соответствуют выбранному языку;
 - сохранённые HTML-мокапы исходной визуальной концепции в `public/mockups/`;
-- desktop-first интерфейс 1440×900 с адаптацией до 1024 px.
+- адаптивный интерфейс от мобильного экрана до рабочего стола 1440×900.
 
 ### Качество
 
@@ -202,7 +203,7 @@ npm run validate       PASS — 28 Vitest files / 37 tests
 npm run build          PASS — production Next.js build
 npm run test:e2e       PASS — 5 Playwright scenarios
 npm run smoke          PASS — health + main application pages
-npm run screenshots    PASS — 4 интерфейсных экрана
+npm run screenshots    PASS — 5 интерфейсных экранов
 docker build           PASS — Linux Node 22 standalone image
 Docker smoke + E2E     PASS — непривилегированный appuser + SQLite
 ```

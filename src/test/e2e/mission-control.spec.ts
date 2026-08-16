@@ -7,6 +7,8 @@ test.beforeEach(async ({ request }) => {
 test('shows the complete mission control surface and mandatory impossible order', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByText('ЛУННЫЙ КУРЬЕР')).toBeVisible();
+  await expect(page.getByRole('group', { name: 'Версия интерфейса' }).getByRole('button', { name: 'Простая' })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('group', { name: 'Версия интерфейса' }).getByRole('button', { name: 'Подробная' }).click();
   await expect(page.getByText('ИИ центра управления')).toBeVisible();
   await page.getByRole('group', { name: 'Язык' }).getByRole('button', { name: 'EN', exact: true }).click();
   await expect(page.getByText('Mission Control AI')).toBeVisible();
