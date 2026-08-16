@@ -424,15 +424,17 @@ code, pre { font-family: var(--mono); }
 .rover-card__charge--repair{border-color:rgba(255,92,115,.32);background:rgba(255,92,115,.055);color:var(--red)}
 
 /* Mission view switcher */
-.view-switcher { display: inline-flex; flex: 0 0 auto; padding: 3px; border: 1px solid var(--border); border-radius: 9px; background: #09141c; }
-.view-switcher button { min-height: 28px; padding: 0 9px; border: 0; border-radius: 6px; background: transparent; color: var(--muted); cursor: pointer; font-size: 9px; font-weight: 700; }
-.view-switcher button:hover { color: var(--text); }
-.view-switcher button.is-active { background: var(--panel-3); color: var(--cyan); }
+.view-switcher, .theme-switcher { display: inline-flex; flex: 0 0 auto; padding: 3px; border: 1px solid var(--border); border-radius: 9px; background: #09141c; }
+.view-switcher button, .theme-switcher button { min-height: 28px; padding: 0 9px; border: 0; border-radius: 6px; background: transparent; color: var(--muted); cursor: pointer; font-size: 9px; font-weight: 700; }
+.view-switcher button:hover, .theme-switcher button:hover { color: var(--text); }
+.view-switcher button.is-active, .theme-switcher button.is-active { background: var(--panel-3); color: var(--cyan); }
 
-/* Simple light mission view */
-html[data-mission-view="simple"] { color-scheme: light; background: #eef8fb; }
-html[data-mission-view="simple"] body { background: #eef8fb; }
-.mission-app--simple {
+/* Independent mission density and color themes */
+html[data-mission-theme="light"] { color-scheme: light; background: #eef8fb; }
+html[data-mission-theme="light"] body { background: #eef8fb; }
+html[data-mission-theme="dark"] { color-scheme: dark; background: #081018; }
+html[data-mission-theme="dark"] body { background: #081018; }
+.mission-app--light {
   --bg: #eef8fb;
   --bg-map: #f5fbfd;
   --panel: #ffffff;
@@ -448,10 +450,14 @@ html[data-mission-view="simple"] body { background: #eef8fb; }
   --amber: #a96717;
   --red: #c34258;
   --violet: #6d61b7;
+  background: linear-gradient(145deg, #f7fcfd 0%, #eaf6f9 100%);
+  color: var(--text);
+}
+.mission-app--dark { background: linear-gradient(rgba(8,16,24,.34), rgba(8,16,24,.7)), radial-gradient(circle at 55% 20%, rgba(57,93,111,.12), transparent 44%); }
+.mission-app--simple {
   height: 100dvh;
   min-height: 700px;
   padding: 16px;
-  background: linear-gradient(145deg, #f7fcfd 0%, #eaf6f9 100%);
   color: var(--text);
 }
 .mission-app--simple .mission-toolbar {
@@ -474,8 +480,10 @@ html[data-mission-view="simple"] body { background: #eef8fb; }
 .mission-app--simple .mission-goal > div span { font-family: var(--font); }
 .mission-app--simple .mission-toolbar__actions { align-items: center; }
 .mission-app--simple .view-switcher,
+.mission-app--simple .theme-switcher,
 .mission-app--simple .locale-switcher { border-color: #d7e7eb; background: #f1f8fa; }
 .mission-app--simple .view-switcher button.is-active,
+.mission-app--simple .theme-switcher button.is-active,
 .mission-app--simple .locale-switcher button.is-active { background: #fff; color: var(--cyan); box-shadow: 0 1px 5px rgba(40,101,117,.12); }
 .mission-app--simple .icon-button { border-color: #d7e7eb; background: #fff; color: var(--text-2); }
 .mission-app--simple .progress-track { background: #dfecef; box-shadow: none; }
@@ -616,7 +624,7 @@ html[data-mission-view="simple"] body { background: #eef8fb; }
   .mission-app--simple .mission-title { grid-column: 1 / -1; }
   .mission-app--simple .mission-clock { display: none; }
   .mission-app--simple .mission-toolbar__actions { grid-column: 1 / -1; justify-content: space-between; }
-  .mission-app--simple .view-switcher button { padding: 0 7px; }
+  .mission-app--simple .view-switcher button, .mission-app--simple .theme-switcher button { padding: 0 7px; }
   .mission-app--simple .mission-grid--simple { display: flex; margin-top: 8px; }
   .mission-app--simple .order-panel { min-height: 390px; }
   .mission-app--simple .mission-center--simple { min-height: 570px; }
@@ -626,4 +634,139 @@ html[data-mission-view="simple"] body { background: #eef8fb; }
   .mission-app--simple .mission-simple-tools { grid-template-columns: 1fr; }
   .mission-app--simple .map-detail-toggle { padding: 0 7px; }
   .mission-app--simple .map-detail-toggle svg { display: none; }
+}
+
+/* Light palette works with both interface densities. */
+.mission-app--light .mission-toolbar {
+  border-color: #d7e7eb;
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 8px 28px rgba(54,105,119,.08);
+}
+.mission-app--light .mission-title__mark { border-color: #c8e4ea; background: #e0f4f8; color: var(--cyan); }
+.mission-app--light .view-switcher,
+.mission-app--light .theme-switcher,
+.mission-app--light .locale-switcher { border-color: #d7e7eb; background: #f1f8fa; }
+.mission-app--light .view-switcher button.is-active,
+.mission-app--light .theme-switcher button.is-active,
+.mission-app--light .locale-switcher button.is-active { background: #fff; color: var(--cyan); box-shadow: 0 1px 5px rgba(40,101,117,.12); }
+.mission-app--light .icon-button { border-color: #d7e7eb; background: #fff; color: var(--text-2); }
+.mission-app--light .progress-track { background: #dfecef; box-shadow: none; }
+.mission-app--light .progress-fill { box-shadow: none; }
+.mission-app--light .mission-panel,
+.mission-app--light .map-shell,
+.mission-app--light .event-timeline { border-color: #d7e7eb; background: #fff; box-shadow: 0 8px 28px rgba(54,105,119,.055); }
+.mission-app--light .status-pill { border-color: #d6e5e9; background: #f4f9fa; }
+.mission-app--light .status-pill--mint { border-color: #bfe1d8; background: #edf8f5; }
+.mission-app--light .status-pill--amber { border-color: #ead4b4; background: #fff8ed; }
+.mission-app--light .status-pill--red { border-color: #efc7cf; background: #fff3f5; }
+.mission-app--light .order-card,
+.mission-app--light .rover-card { border-color: #dbe8ec; background: #fff; color: var(--text); }
+.mission-app--light .order-card:hover { border-color: #85bfcd; background: #fff; }
+.mission-app--light .order-card.is-selected,
+.mission-app--light .rover-card.is-selected { border-color: #35a5be; background: #f3fbfd; box-shadow: inset 3px 0 0 #25a0bb; }
+.mission-app--light .order-card.is-blocked:not(.is-selected) { border-color: #e8cbd1; }
+.mission-app--light .entity-details,
+.mission-app--light .route-settings,
+.mission-app--light .dispatch-details { border-color: #e5eef1; }
+.mission-app--light .map-shell { background: var(--bg-map); }
+.mission-app--light .map-toolbar,
+.mission-app--light .map-footer { border-color: #dbe9ed; background: rgba(255,255,255,.9); color: var(--text-2); }
+.mission-app--light .map-detail-toggle { border-color: #cfe3e8; background: #f3fafb; color: #347383; }
+.mission-app--light .map-edge { stroke: #91b8c2; opacity: .72; }
+.mission-app--light .map-edge--risk { stroke: #cf7584; }
+.mission-app--light .map-edge--active { stroke: var(--cyan); filter: none; }
+.mission-app--light .map-node circle:first-child { fill: #fff; stroke: #38798a; stroke-width: .55; }
+.mission-app--light .map-node--base circle:first-child { fill: #0f9abc; stroke: #087b98; }
+.mission-app--light .map-node--charger circle:first-child { fill: #8c7bcf; stroke: #6d61b7; }
+.mission-app--light .map-node text,
+.mission-app--light .order-marker text,
+.mission-app--light .rover-marker text { fill: #345b66; }
+.mission-app--light .rover-marker circle { fill: #fff; stroke: #16866d; }
+.mission-app--light .rover-marker path { stroke: #16866d; }
+.mission-app--light .rover-card__icon { background: #eaf6f8; color: var(--cyan); }
+.mission-app--light .rover-card__charge,
+.mission-app--light .objective-select,
+.mission-app--light .quick-prompts button,
+.mission-app--light .preset-row button,
+.mission-app--light .ai-input input,
+.mission-app--light .tool-call { border-color: #d9e7eb; background: #f4f9fa; color: var(--text-2); }
+.mission-app--light .objective-select button.is-active { background: #fff; color: var(--cyan); box-shadow: 0 1px 4px rgba(40,101,117,.1); }
+.mission-app--light .dispatch-section,
+.mission-app--light .event-timeline > header,
+.mission-app--light .event-row { border-color: #e0ecef; }
+.mission-app--light .dispatch-preview { border-color: #dbe8ec; background: #f8fcfd; }
+.mission-app--light .dispatch-grid span { background: #fff; }
+.mission-app--light .ai-response { border-color: #cfe3e8; background: #f5fbfc; }
+.mission-app--light .ai-response p { color: var(--text); }
+.mission-app--light .delivery-result { border-color: #b8dce4; background: #fff; color: var(--text); box-shadow: 0 18px 50px rgba(44,91,104,.18); }
+.mission-app--light .delivery-result__metrics span { background: #f2f8fa; }
+
+/* Simple density keeps its reduced information hierarchy in dark mode. */
+.mission-app--dark.mission-app--simple .mission-toolbar { border-color: var(--border); background: rgba(15,27,38,.94); box-shadow: 0 14px 50px rgba(0,0,0,.2); }
+.mission-app--dark.mission-app--simple .mission-title__mark { background: rgba(66,217,255,.1); }
+.mission-app--dark.mission-app--simple .view-switcher,
+.mission-app--dark.mission-app--simple .theme-switcher,
+.mission-app--dark.mission-app--simple .locale-switcher { border-color: var(--border); background: #09141c; }
+.mission-app--dark.mission-app--simple .view-switcher button.is-active,
+.mission-app--dark.mission-app--simple .theme-switcher button.is-active,
+.mission-app--dark.mission-app--simple .locale-switcher button.is-active { background: var(--panel-3); color: var(--cyan); box-shadow: none; }
+.mission-app--dark.mission-app--simple .icon-button { border-color: var(--border); background: rgba(255,255,255,.025); color: var(--text-2); }
+.mission-app--dark.mission-app--simple .progress-track { background: #071018; }
+.mission-app--dark.mission-app--simple .status-pill { border-color: var(--border); background: rgba(255,255,255,.025); }
+.mission-app--dark.mission-app--simple .status-pill--mint { border-color: rgba(99,231,178,.25); background: rgba(99,231,178,.08); }
+.mission-app--dark.mission-app--simple .status-pill--amber { border-color: rgba(255,182,83,.28); background: rgba(255,182,83,.08); }
+.mission-app--dark.mission-app--simple .status-pill--red { border-color: rgba(255,92,115,.3); background: rgba(255,92,115,.08); }
+.mission-app--dark.mission-app--simple .mission-panel,
+.mission-app--dark.mission-app--simple .map-shell,
+.mission-app--dark.mission-app--simple .event-timeline { border-color: var(--border); background: rgba(15,27,38,.93); box-shadow: none; }
+.mission-app--dark.mission-app--simple .map-shell { background: var(--bg-map); }
+.mission-app--dark.mission-app--simple .order-card,
+.mission-app--dark.mission-app--simple .rover-card { border-color: var(--border); background: #101e29; }
+.mission-app--dark.mission-app--simple .order-card:hover { border-color: var(--border-active); background: #132430; }
+.mission-app--dark.mission-app--simple .order-card.is-selected,
+.mission-app--dark.mission-app--simple .rover-card.is-selected { border-color: rgba(66,217,255,.58); background: rgba(66,217,255,.055); box-shadow: inset 3px 0 0 var(--cyan); }
+.mission-app--dark.mission-app--simple .order-card.is-blocked:not(.is-selected) { border-color: rgba(255,92,115,.2); }
+.mission-app--dark.mission-app--simple .entity-details,
+.mission-app--dark.mission-app--simple .route-settings,
+.mission-app--dark.mission-app--simple .dispatch-details { border-color: var(--border); }
+.mission-app--dark.mission-app--simple .map-toolbar,
+.mission-app--dark.mission-app--simple .map-footer { border-color: rgba(36,55,70,.75); background: rgba(11,20,28,.85); color: var(--muted); }
+.mission-app--dark.mission-app--simple .map-detail-toggle { border-color: var(--border); background: #142330; color: var(--cyan); }
+.mission-app--dark.mission-app--simple .map-edge { stroke: #314957; opacity: .7; }
+.mission-app--dark.mission-app--simple .map-edge--risk { stroke: #8d4e57; }
+.mission-app--dark.mission-app--simple .map-edge--active { stroke: var(--cyan); filter: drop-shadow(0 0 2px rgba(66,217,255,.55)); }
+.mission-app--dark.mission-app--simple .map-node circle:first-child { fill: #9aabb5; stroke: #d8e0e5; stroke-width: .35; }
+.mission-app--dark.mission-app--simple .map-node--base circle:first-child { fill: var(--cyan); }
+.mission-app--dark.mission-app--simple .map-node--charger circle:first-child { fill: var(--violet); }
+.mission-app--dark.mission-app--simple .map-node text,
+.mission-app--dark.mission-app--simple .order-marker text,
+.mission-app--dark.mission-app--simple .rover-marker text { fill: #aebdc7; }
+.mission-app--dark.mission-app--simple .rover-marker circle { fill: #0b1720; stroke: var(--mint); }
+.mission-app--dark.mission-app--simple .rover-marker path { stroke: var(--mint); }
+.mission-app--dark.mission-app--simple .rover-card__icon { background: #0a151d; color: var(--cyan); }
+.mission-app--dark.mission-app--simple .rover-card__charge,
+.mission-app--dark.mission-app--simple .objective-select,
+.mission-app--dark.mission-app--simple .quick-prompts button,
+.mission-app--dark.mission-app--simple .ai-input input,
+.mission-app--dark.mission-app--simple .tool-call { border-color: var(--border); background: #09141c; color: var(--text-2); }
+.mission-app--dark.mission-app--simple .objective-select button.is-active { background: var(--panel-3); color: var(--cyan); box-shadow: none; }
+.mission-app--dark.mission-app--simple .dispatch-section,
+.mission-app--dark.mission-app--simple .event-timeline > header,
+.mission-app--dark.mission-app--simple .event-row { border-color: var(--border); }
+.mission-app--dark.mission-app--simple .dispatch-preview { border-color: var(--border); background: #0d1a23; }
+.mission-app--dark.mission-app--simple .dispatch-grid span { background: rgba(255,255,255,.025); }
+.mission-app--dark.mission-app--simple .mission-simple-tools > details { border-color: var(--border); background: rgba(15,27,38,.93); }
+.mission-app--dark.mission-app--simple .mission-simple-tools > details[open] > summary { border-color: var(--border); }
+.mission-app--dark.mission-app--simple .ai-response { border-color: rgba(66,217,255,.2); background: linear-gradient(140deg, rgba(66,217,255,.055), rgba(169,139,255,.035)); }
+.mission-app--dark.mission-app--simple .ai-response p { color: #d7e1e7; }
+.mission-app--dark.mission-app--simple .delivery-result { border-color: var(--border-active); background: rgba(13,26,35,.98); color: var(--text); box-shadow: 0 22px 70px rgba(0,0,0,.45); }
+.mission-app--dark.mission-app--simple .delivery-result__metrics span { background: #09151d; }
+
+@media (max-width: 760px) {
+  .mission-app .mission-toolbar { min-height: 112px; grid-template-columns: 1fr; gap: 8px; padding: 10px 12px; }
+  .mission-app .mission-title { grid-column: 1 / -1; }
+  .mission-app .mission-toolbar__actions { grid-column: 1 / -1; width: 100%; justify-content: space-between; gap: 5px; }
+  .mission-app .mission-toolbar__actions > .icon-button { display: none; }
+  .mission-app .view-switcher button,
+  .mission-app .theme-switcher button { padding: 0 6px; }
 }

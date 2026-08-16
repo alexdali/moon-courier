@@ -8,7 +8,7 @@ import { useI18n } from '@/i18n/i18n-provider';
 
 export function LunarMap() {
   const { t } = useI18n();
-  const { mode } = useMissionView();
+  const { mode, theme } = useMissionView();
   const [showDetails, setShowDetails] = useState(false);
   const world = useMissionStore((state) => state.dashboard.world);
   const orders = useMissionStore((state) => state.dashboard.orders);
@@ -25,7 +25,7 @@ export function LunarMap() {
     <div className="map-toolbar"><span>{t(mode === 'simple' ? 'MISSION MAP' : 'TACTICAL MAP')}</span><span className="map-toolbar__right">{!simplified ? <span className="map-legend"><i className="legend-dot legend-dot--cyan"/>{t('selected route')} <i className="legend-dot legend-dot--red"/>{t('high risk')}</span> : null}{mode === 'simple' ? <button className="map-detail-toggle" type="button" onClick={() => setShowDetails((value) => !value)} aria-pressed={showDetails}><Icon name="settings" size={14}/>{t(showDetails ? 'Hide map details' : 'Show map details')}</button> : null}</span></div>
     <svg className="lunar-map" viewBox="0 0 100 100" role="img" aria-label={t('Lunar delivery map')}>
       <defs>
-        <radialGradient id="moonSurface"><stop offset="0" stopColor={mode === 'simple' ? '#ffffff' : '#172631'}/><stop offset="1" stopColor={mode === 'simple' ? '#e8f5f8' : '#09131b'}/></radialGradient>
+        <radialGradient id="moonSurface"><stop offset="0" stopColor={theme === 'light' ? '#ffffff' : '#172631'}/><stop offset="1" stopColor={theme === 'light' ? '#e8f5f8' : '#09131b'}/></radialGradient>
         <filter id="glow"><feGaussianBlur stdDeviation="1.25" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#29404f" strokeWidth=".18" opacity=".55"/></pattern>
       </defs>

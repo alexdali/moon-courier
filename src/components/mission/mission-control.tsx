@@ -21,8 +21,8 @@ export function MissionControl({ initialDashboard }: { initialDashboard: Mission
 function MissionControlInner() {
   useDispatchPreview();
   const { t } = useI18n();
-  const { mode } = useMissionView();
-  return <main className={`mission-app mission-app--${mode}`}>
+  const { mode, theme } = useMissionView();
+  return <main className={`mission-app mission-app--${mode} mission-app--${theme}`}>
     <MissionToolbar/>
     {mode === 'simple' ? <div className="mission-grid mission-grid--simple">
         <OrderList/>
