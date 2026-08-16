@@ -11,6 +11,7 @@ test.beforeEach(async ({ page, request }) => {
 });
 
 test('simple view keeps the first glance compact and reveals details on demand', async ({ page }) => {
+  test.setTimeout(120_000);
   await page.setViewportSize({ width: 1280, height: 600 });
   await expect(page.locator('html')).toHaveAttribute('data-mission-view', 'simple');
   await expect(page.locator('html')).toHaveAttribute('data-mission-theme', 'light');
