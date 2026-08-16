@@ -9,8 +9,8 @@ The current single-host layout keeps project material separate from the deployab
 └── backups/
 ```
 
-`Caddyfile` exposes the application at `https://moon-courier.testvps.click`.
-Caddy provisions and renews the TLS certificate automatically after the DNS
+`Caddyfile` exposes the application through the configured HTTPS domain.
+Caddy provisions and renews the TLS certificate automatically after its DNS
 record points to the VPS.
 
 The backup unit uses SQLite's online `.backup` command, validates the compressed artifact, and retains 14 days by default. Install it with:
