@@ -8,9 +8,9 @@
 
 Проверено в рабочем дереве:
 
-- 258 TypeScript/TSX-файлов в `src`;
-- 38 файлов в `src/test`, из них 34 `*.test.ts` / `*.spec.ts`;
-- 29 Vitest-файлов и 5 Playwright spec-файлов;
+- 259 TypeScript/TSX-файлов в `src`;
+- 39 файлов в `src/test`, из них 35 `*.test.ts` / `*.spec.ts`;
+- 30 Vitest-файлов и 5 Playwright spec-файлов;
 - 45 Markdown-документов, включая evidence report и автоматически поддерживаемые Next.js agent rules;
 - 3 SQL migration;
 - 7 актуальных скриншотов интерфейса;
@@ -28,16 +28,16 @@ npm run validate
 Результат:
 
 ```text
-Structure validation passed: 258 source files, no unresolved local imports.
+Structure validation passed: 259 source files, no unresolved local imports.
 SQL validation passed: 3 migrations, 18 tables.
 Domain validation: PASS.
-Syntax validation passed for 274 TypeScript/TSX files.
+Syntax validation passed for 275 TypeScript/TSX files.
 Documentation links: PASS, 45 Markdown files / 57 local links.
 Static assets: PASS, 6 HTML files / 53 local references / 4 JS files.
-Secret scan: PASS, 305 text/config files, no credential patterns.
+Secret scan: PASS, 306 text/config files, no credential patterns.
 TypeScript: PASS.
 ESLint: PASS, 0 warnings.
-Vitest: 29 files passed, 44 tests passed.
+Vitest: 30 files passed, 45 tests passed.
 ```
 
 ## 3. Доменный сценарий
@@ -123,6 +123,7 @@ Health endpoint подтвердил доступность SQLite и конфи
 - на всех пяти страницах приложения отсутствуют известные англоязычные UI-надписи в русском режиме;
 - динамические статусы, ошибки, единицы измерения, названия заказов и сценарные подсказки локализованы;
 - английскими оставлены только собственные имена точек карты, роверов, моделей и технологических продуктов.
+- кнопка «Рекомендовать» показывает состояние загрузки и реальный ответ AI; ожидание учитывает сетевую задержку OpenRouter до 90 секунд.
 
 ## 8. Визуальная проверка
 
@@ -148,7 +149,7 @@ screenshots/ops.png
 docker build --tag moon-courier:verify .
 ```
 
-Результат актуального VPS-развёртывания кода `e226af0`: образ `sha256:b7b5cb13dc212639cbf98da6c91f1ac84d795f690202f6f3121b6aabe3134778`, около 138 MB. Зависимости установлены воспроизводимо через `npm ci` из lock-файла; npm audit сообщил 0 vulnerabilities.
+Результат актуального VPS-развёртывания кода `edaf876`: образ `sha256:521528c32f1380421cf4ca0126def67bc1d7cf1a230c7475d6700488dab54442`, около 138 MB. Зависимости установлены воспроизводимо через `npm ci` из lock-файла; npm audit сообщил 0 vulnerabilities.
 
 Контейнер запущен как непривилегированный `appuser`; внутри автоматически применены migration и seed SQLite. Контейнер имеет статус `healthy`, публичный HTTP возвращает 200. Против VPS успешно повторены smoke и все 10 E2E; после теста демонстрационная миссия сброшена и создана свежая резервная копия.
 
@@ -165,11 +166,11 @@ docker build --tag moon-courier:verify .
 - deterministic degraded mode без API key;
 - ответ Mission Control на языке пользовательского запроса.
 
-На VPS авторизация ключа OpenRouter и доступность обоих настроенных model ID подтверждены через API провайдера. Платные запросы с данными миссии не выполнялись без отдельного согласия на их передачу стороннему сервису.
+После явного согласия владельца на VPS выполнены реальные запросы всех трёх быстрых действий: «Рекомендовать», «Объяснить» и «Сравнить». DeepSeek вернул online-ответы с детерминированными tool calls; отдельный реальный отказ primary-модели успешно маршрутизирован в Luna. Финальный E2E подтвердил видимое состояние загрузки и ответ DeepSeek с prompt version `mission-control-v1.2`.
 
 ## 11. Secret scan
 
-Реальные credential patterns не найдены. `.env` и SQLite-файлы исключены из Git/Docker context. Значения пользовательских секретов не выводились и не сохранялись в отчёт; проверка OpenRouter выполнялась только по HTTP-статусу авторизации и списку доступных моделей.
+Реальные credential patterns не найдены. `.env` и SQLite-файлы исключены из Git/Docker context. Значения пользовательских секретов не выводились и не сохранялись в отчёт; runtime-проверки OpenRouter использовали ключ только внутри защищённого окружения приложения.
 
 ## 12. Итог
 
@@ -184,4 +185,4 @@ screenshots     PASS
 Docker build    PASS
 ```
 
-Платная оценка качества AI-ответов остаётся отдельной проверкой, требующей явного согласия на передачу данных миссии в OpenRouter.
+Базовый платный AI smoke выполнен с явного согласия владельца. Полномасштабный benchmark качества и стоимости остаётся отдельной задачей.
