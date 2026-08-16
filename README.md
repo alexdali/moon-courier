@@ -189,19 +189,7 @@ SQLite хранится в именованном volume.
 
 ### Проверенный baseline
 
-На 2026-08-15 выполнены на чистых зависимостях:
-
-```text
-npm run validate       PASS — 28 Vitest files / 37 tests
-npm run build          PASS — production Next.js build
-npm run test:e2e       PASS — 5 Playwright scenarios
-npm run smoke          PASS — health + main application pages
-npm run screenshots    PASS — 7 интерфейсных экранов
-docker build           PASS — Linux Node 22 standalone image
-Docker smoke + E2E     PASS — непривилегированный appuser + SQLite
-```
-
-Live-проверка платных OpenRouter-моделей требует пользовательского `OPENROUTER_API_KEY` и не входит в offline baseline.
+[Актуальный отчёт о проверках и baseline](docs/VALIDATION_REPORT.md).
 
 ---
 
@@ -248,57 +236,7 @@ npm run clean
 
 ## 6. Как работают правила
 
-### Груз
-
-```text
-loadRatio = orderWeight / roverCapacity
-```
-
-Если `orderWeight > roverCapacity`, запуск блокируется независимо от батареи и риска.
-
-### Скорость
-
-```text
-effectiveSpeed = baseSpeed × edgeSpeedFactor × zoneSpeedMultiplier × loadPenalty
-```
-
-Тяжёлый груз и медленная зона увеличивают ETA.
-
-### Энергия
-
-```text
-energy = distance × baseConsumption × edgeFactor × zoneFactor × loadMultiplier
-batteryRequired% = energy / batteryCapacity × 100
-```
-
-Путь включает пустой подход до точки погрузки и загруженную часть до назначения. Вес влияет только на загруженную часть.
-
-### Риск
-
-```text
-segmentRisk = baseRisk × zoneRisk × loadMultiplier × resistanceMultiplier
-routeRisk = 1 - product(1 - segmentRisk)
-```
-
-Результат доставки разрешается seeded PRNG, поэтому одинаковые входные данные и seed дают одинаковый replay.
-
-### Экономика
-
-До запуска показывается ожидаемый результат:
-
-```text
-reward - energyCost - expectedRiskLoss - expectedLatePenalty
-```
-
-После доставки сохраняется фактический ledger:
-
-- энергия;
-- награда или штраф;
-- просрочка;
-- зарядка;
-- ремонт.
-
-Полные формулы: [`docs/FORMULAS.md`](docs/FORMULAS.md).
+[Правила игры](docs/GAME_RULES.md) и [формулы расчётов](docs/FORMULAS.md).
 
 ---
 
@@ -434,7 +372,7 @@ migrations/0001_initial.sql
 
 ---
 
-## 13. Честные ограничения MVP
+## 13. Текущие ограничения MVP
 
 - нет пользователей и авторизации;
 - нет real-time multiplayer;
