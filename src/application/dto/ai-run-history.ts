@@ -23,5 +23,21 @@ export interface AiRunHistoryItemDto {
 }
 
 export interface AiRunHistoryDto {
+  totals: {
+    requestCount: number;
+    inputTokens: number;
+    outputTokens: number;
+    cachedTokens: number;
+    cacheWriteTokens: number;
+    costUsd: number;
+  };
+  dailyCosts: readonly {
+    date: string;
+    requestCount: number;
+    inputTokens: number;
+    outputTokens: number;
+    cachedTokens: number;
+    costUsd: number;
+  }[];
   runs: readonly AiRunHistoryItemDto[];
 }

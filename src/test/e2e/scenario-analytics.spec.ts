@@ -15,12 +15,16 @@ test('scenario architect and analytics pages are reachable', async ({ page }) =>
 });
 
 test('mission debrief exposes developer history and a page-wide theme switch', async ({ page }) => {
-  await page.goto('/analytics');
+  await page.goto('/analytics?tab=developer');
 
-  await expect(page.getByRole('tab', { name: 'Режим разработчика' })).toBeVisible();
-  await page.getByRole('tab', { name: 'Режим разработчика' }).click();
+  await expect(page.getByRole('tab', { name: 'Режим разработчика' })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
   await expect(page.getByRole('heading', { name: 'Журнал запросов OpenRouter' })).toBeVisible();
-  await expect(page.getByText('Токены из кэша', { exact: true })).toBeVisible();
+  await expect(page.getByText('Токены из кэша', { exact: true }).first()).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Итоги по дням' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Журнал ИИ' })).toBeVisible();
 
   await page.getByRole('button', { name: 'Тёмная', exact: true }).click();
   await expect(page.locator('html')).toHaveAttribute('data-mission-theme', 'dark');

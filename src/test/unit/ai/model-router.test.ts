@@ -48,6 +48,8 @@ describe('model router', () => {
       sumCostSince: () => 0,
       listRecent: () => [],
       listHistory: () => [],
+      getHistoryTotals: () => ({}),
+      listDailyCosts: () => [],
     };
     const router = new ModelRouter(fakeEnv(), audit, new FakeClock(), new FakeIdGenerator());
     const result = await router.execute({

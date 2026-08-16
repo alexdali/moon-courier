@@ -46,4 +46,6 @@ export interface AiAuditRepository {
   sumCostSince(isoTimestamp: string): number;
   listRecent(limit: number): readonly Record<string, unknown>[];
   listHistory(limit: number): readonly Record<string, unknown>[];
+  getHistoryTotals(): Record<string, unknown>;
+  listDailyCosts(): readonly Record<string, unknown>[];
 }

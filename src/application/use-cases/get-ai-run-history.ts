@@ -39,9 +39,26 @@ function mapRun(row: Record<string, unknown>): AiRunHistoryItemDto {
 export class GetAiRunHistoryUseCase {
   constructor(private readonly repositories: RepositoryBundle) {}
 
-  execute(limit = 100): AiRunHistoryDto {
+  execute(limit = 250): AiRunHistoryDto {
+    const totals = this.repositories.aiAudit.getHistoryTotals();
     return {
-      runs: this.repositories.aiAudit.listHistory(Math.min(250, Math.max(1, limit))).map(mapRun),
+      totals: {
+        requestCount: Number(totals.request_count ?? 0),
+        inputTokens: Number(totals.input_tokens ?? 0),
+        outputTokens: Number(totals.output_tokens ?? 0),
+        cachedTokens: Number(totals.cached_tokens ?? 0),
+        cacheWriteTokens: Number(totals.cache_write_tokens ?? 0),
+        costUsd: Number(totals.cost_usd ?? 0),
+      },
+      dailyCosts: this.repositories.aiAudit.listDailyCosts().map((row) => ({
+        date: String(row.date ?? ''),
+        requestCount: Number(row.request_count ?? 0),
+        inputTokens: Number(row.input_tokens ?? 0),
+        outputTokens: Number(row.output_tokens ?? 0),
+        cachedTokens: Number(row.cached_tokens ?? 0),
+        costUsd: Number(row.cost_usd ?? 0),
+      })),
+      runs: this.repositories.aiAudit.listHistory(Math.min(1000, Math.max(1, limit))).map(mapRun),
     };
   }
 }

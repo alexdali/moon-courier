@@ -71,6 +71,18 @@ describe('AI audit repository', () => {
         max_tokens: 1000,
       },
     ]);
+    expect(context.repositories.aiAudit.getHistoryTotals()).toMatchObject({
+      request_count: 1,
+      input_tokens: 120,
+      output_tokens: 30,
+      cached_tokens: 80,
+      cost_usd: 0.00002,
+    });
+    expect(context.repositories.aiAudit.listDailyCosts()[0]).toMatchObject({
+      date: '2026-08-15',
+      request_count: 1,
+      cost_usd: 0.00002,
+    });
     const tool = context.db
       .prepare('SELECT status, duration_ms FROM ai_tool_calls WHERE ai_run_id = ?')
       .get('ai_run_test') as { status: string; duration_ms: number };

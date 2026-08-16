@@ -27,6 +27,10 @@ export function SiteHeader({ subtitle = 'Lunar Mission Control' }: { subtitle?: 
         <Link href="/ops">{t('Ops')}</Link>
       </nav>
       <div className="site-header__actions">
+        <Link href="/analytics?tab=developer" className="developer-mode-link">
+          <Icon name="spark" size={14} />
+          <span>{t('AI log')}</span>
+        </Link>
         <div className="theme-switcher" role="group" aria-label={t('Color theme')}>
           <button
             type="button"

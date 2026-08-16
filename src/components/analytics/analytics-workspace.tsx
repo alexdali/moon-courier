@@ -10,12 +10,18 @@ import { useI18n } from '@/i18n/i18n-provider';
 export function AnalyticsWorkspace({
   analytics,
   history,
+  initialTab,
 }: {
   analytics: AnalyticsDashboardDto;
   history: AiRunHistoryDto;
+  initialTab: 'analytics' | 'developer';
 }) {
   const { t } = useI18n();
-  const [tab, setTab] = useState<'analytics' | 'developer'>('analytics');
+  const [tab, setTab] = useState<'analytics' | 'developer'>(initialTab);
+  function selectTab(next: 'analytics' | 'developer') {
+    setTab(next);
+    window.history.replaceState(null, '', next === 'developer' ? '/analytics?tab=developer' : '/analytics');
+  }
   return (
     <>
       <div className="analytics-tabs" role="tablist" aria-label={t('Mission analysis sections')}>
@@ -24,7 +30,7 @@ export function AnalyticsWorkspace({
           role="tab"
           aria-selected={tab === 'analytics'}
           className={tab === 'analytics' ? 'is-active' : ''}
-          onClick={() => setTab('analytics')}
+          onClick={() => selectTab('analytics')}
         >
           {t('Mission analysis')}
         </button>
@@ -33,7 +39,7 @@ export function AnalyticsWorkspace({
           role="tab"
           aria-selected={tab === 'developer'}
           className={tab === 'developer' ? 'is-active' : ''}
-          onClick={() => setTab('developer')}
+          onClick={() => selectTab('developer')}
         >
           {t('Developer mode')}
         </button>

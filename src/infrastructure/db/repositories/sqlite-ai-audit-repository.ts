@@ -94,4 +94,24 @@ export class SqliteAiAuditRepository implements AiAuditRepository {
       provider_requests: jsonColumn(row.provider_requests_json, []),
     }));
   }
+  getHistoryTotals(): Record<string, unknown> {
+    return this.db.prepare(`SELECT COUNT(*) AS request_count,
+      COALESCE(SUM(input_tokens), 0) AS input_tokens,
+      COALESCE(SUM(output_tokens), 0) AS output_tokens,
+      COALESCE(SUM(cached_tokens), 0) AS cached_tokens,
+      COALESCE(SUM(cache_write_tokens), 0) AS cache_write_tokens,
+      COALESCE(SUM(cost_usd), 0) AS cost_usd
+      FROM ai_runs`).get() as Record<string, unknown>;
+  }
+  listDailyCosts(): readonly Record<string, unknown>[] {
+    return this.db.prepare(`SELECT substr(created_at, 1, 10) AS date,
+      COUNT(*) AS request_count,
+      COALESCE(SUM(input_tokens), 0) AS input_tokens,
+      COALESCE(SUM(output_tokens), 0) AS output_tokens,
+      COALESCE(SUM(cached_tokens), 0) AS cached_tokens,
+      COALESCE(SUM(cost_usd), 0) AS cost_usd
+      FROM ai_runs
+      GROUP BY substr(created_at, 1, 10)
+      ORDER BY date DESC`).all() as Record<string, unknown>[];
+  }
 }

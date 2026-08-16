@@ -45,18 +45,14 @@ function statusTone(status: string): 'mint' | 'amber' | 'red' | 'neutral' {
 export function AiRunHistory({ initial }: { initial: AiRunHistoryDto }) {
   const { locale, t } = useI18n();
   const router = useRouter();
-  const totals = initial.runs.reduce(
-    (sum, run) => ({
-      tokens: sum.tokens + run.inputTokens + run.outputTokens,
-      cached: sum.cached + run.cachedTokens,
-      cost: sum.cost + run.costUsd,
-    }),
-    { tokens: 0, cached: 0, cost: 0 },
-  );
   const number = new Intl.NumberFormat(locale === 'ru' ? 'ru-RU' : 'en-US');
   const date = new Intl.DateTimeFormat(locale === 'ru' ? 'ru-RU' : 'en-US', {
     dateStyle: 'medium',
     timeStyle: 'medium',
+  });
+  const dayDate = new Intl.DateTimeFormat(locale === 'ru' ? 'ru-RU' : 'en-US', {
+    dateStyle: 'long',
+    timeZone: 'UTC',
   });
 
   return (
@@ -64,23 +60,44 @@ export function AiRunHistory({ initial }: { initial: AiRunHistoryDto }) {
       <section className="developer-summary">
         <article>
           <span>{t('AI requests')}</span>
-          <strong>{number.format(initial.runs.length)}</strong>
+          <strong>{number.format(initial.totals.requestCount)}</strong>
         </article>
         <article>
           <span>{t('All tokens')}</span>
-          <strong>{number.format(totals.tokens)}</strong>
+          <strong>{number.format(initial.totals.inputTokens + initial.totals.outputTokens)}</strong>
         </article>
         <article>
           <span>{t('Cached tokens')}</span>
-          <strong>{number.format(totals.cached)}</strong>
+          <strong>{number.format(initial.totals.cachedTokens)}</strong>
         </article>
         <article>
-          <span>{t('Total cost')}</span>
-          <strong>${totals.cost.toFixed(6)}</strong>
+          <span>{t('All-time AI cost')}</span>
+          <strong>${initial.totals.costUsd.toFixed(6)}</strong>
         </article>
         <button className="secondary-action" type="button" onClick={() => router.refresh()}>
           {t('Refresh history')}
         </button>
+      </section>
+      <section className="panel daily-costs">
+        <header>
+          <div>
+            <span className="eyebrow">{t('AI cost by day')}</span>
+            <h2>{t('Daily totals')}</h2>
+          </div>
+          <small>{t('Dates are grouped by UTC')}</small>
+        </header>
+        <div className="daily-cost-table">
+          <div className="daily-cost-table__head">
+            <span>{t('Date')}</span><span>{t('Requests')}</span><span>{t('Input / output')}</span><span>{t('Cached tokens')}</span><span>{t('Cost')}</span>
+          </div>
+          {initial.dailyCosts.map((day) => <div key={day.date}>
+            <strong>{dayDate.format(new Date(`${day.date}T00:00:00Z`))}</strong>
+            <span>{number.format(day.requestCount)}</span>
+            <span>{number.format(day.inputTokens)} / {number.format(day.outputTokens)}</span>
+            <span>{number.format(day.cachedTokens)}</span>
+            <strong>${day.costUsd.toFixed(6)}</strong>
+          </div>)}
+        </div>
       </section>
       <section className="panel developer-history">
         <header>
@@ -94,9 +111,10 @@ export function AiRunHistory({ initial }: { initial: AiRunHistoryDto }) {
             </p>
           </div>
           <small>
-            {initial.runs.length} {t('records')}
+            {initial.runs.length} / {initial.totals.requestCount} {t('records')}
           </small>
         </header>
+        <p className="developer-history__hint">{t('Open Full data on a request to see its prompt, model parameters and token details.')}</p>
         {initial.runs.length === 0 ? (
           <p className="empty-copy">{t('No AI requests have been saved yet.')}</p>
         ) : (
@@ -114,6 +132,7 @@ export function AiRunHistory({ initial }: { initial: AiRunHistoryDto }) {
                   </span>
                   <span>${run.costUsd.toFixed(6)}</span>
                   <StatusPill tone={statusTone(run.status)}>{t(run.status)}</StatusPill>
+                  <span className="developer-run__open">{t('Full data')}</span>
                 </summary>
                 <div className="developer-run__body">
                   <dl className="developer-run__facts">

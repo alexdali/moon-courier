@@ -13,6 +13,9 @@ describe('Russian UI translation', () => {
     ['Developer mode', 'Режим разработчика'],
     ['Cached tokens', 'Токены из кэша'],
     ['Request parameters', 'Параметры запроса'],
+    ['All-time AI cost', 'Стоимость ИИ за всё время'],
+    ['Daily totals', 'Итоги по дням'],
+    ['Full data', 'Полные данные'],
   ])('translates %s', (source, expected) => {
     expect(translateRussianText(source)).toBe(expected);
   });

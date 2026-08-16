@@ -6,10 +6,16 @@ import { ensureDemoInitialized } from '@/infrastructure/composition/app-containe
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-export default function AnalyticsPage() {
+export default async function AnalyticsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tab?: string | string[] }>;
+}) {
+  const query = await searchParams;
+  const initialTab = query.tab === 'developer' ? 'developer' : 'analytics';
   const container = ensureDemoInitialized();
   const data = container.useCases.analytics.execute(undefined, 80);
-  const history = container.useCases.aiHistory.execute(100);
+  const history = container.useCases.aiHistory.execute();
   return (
     <>
       <SiteHeader subtitle="Mission Debrief" />
@@ -19,7 +25,12 @@ export default function AnalyticsPage() {
           title="Evidence before explanation."
           description="All metrics and counterfactuals are calculated by the deterministic engine. AI may explain these numbers, but it never creates them."
         />
-        <AnalyticsWorkspace analytics={data} history={history} />
+        <AnalyticsWorkspace
+          key={initialTab}
+          analytics={data}
+          history={history}
+          initialTab={initialTab}
+        />
       </main>
     </>
   );
