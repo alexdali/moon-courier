@@ -1,0 +1,4 @@
+ALTER TABLE ai_runs ADD COLUMN cached_tokens INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE ai_runs ADD COLUMN cache_write_tokens INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE ai_runs ADD COLUMN provider_requests_json TEXT NOT NULL DEFAULT '[]';
+

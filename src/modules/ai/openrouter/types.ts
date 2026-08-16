@@ -30,7 +30,10 @@ export interface OpenRouterRequest {
   tool_choice?: 'auto' | 'none' | 'required';
   response_format?: Record<string, unknown>;
   max_tokens?: number;
-  reasoning?: { enabled: boolean; effort?: 'none' | 'minimal' | 'low' | 'medium' | 'high' | 'xhigh' };
+  reasoning?: {
+    enabled: boolean;
+    effort?: 'none' | 'minimal' | 'low' | 'medium' | 'high' | 'xhigh';
+  };
   provider?: { require_parameters?: boolean; data_collection?: 'allow' | 'deny' };
 }
 
@@ -40,6 +43,11 @@ export interface OpenRouterUsage {
   total_tokens?: number;
   cost?: number;
   cost_details?: { upstream_inference_cost?: number };
+  prompt_tokens_details?: {
+    cached_tokens?: number;
+    cache_write_tokens?: number;
+    audio_tokens?: number;
+  };
 }
 
 export interface OpenRouterResponse {
@@ -57,6 +65,10 @@ export interface OpenRouterResponse {
 export interface OpenRouterCompletion {
   response: OpenRouterResponse;
   message: OpenRouterMessage;
-  usage: Required<Pick<OpenRouterUsage, 'prompt_tokens' | 'completion_tokens'>> & { cost: number };
+  usage: Required<Pick<OpenRouterUsage, 'prompt_tokens' | 'completion_tokens'>> & {
+    cached_tokens: number;
+    cache_write_tokens: number;
+    cost: number;
+  };
   latencyMs: number;
 }

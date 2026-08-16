@@ -4,6 +4,7 @@ import { AskMissionControlUseCase } from '@/application/use-cases/ask-mission-co
 import { ChargeRoverUseCase } from '@/application/use-cases/charge-rover';
 import { GenerateScenarioUseCase } from '@/application/use-cases/generate-scenario';
 import { GetAnalyticsDashboardUseCase } from '@/application/use-cases/get-analytics-dashboard';
+import { GetAiRunHistoryUseCase } from '@/application/use-cases/get-ai-run-history';
 import { GetMissionDashboardUseCase } from '@/application/use-cases/get-mission-dashboard';
 import { GetOpsSummaryUseCase } from '@/application/use-cases/get-ops-summary';
 import { InitializeDemoUseCase } from '@/application/use-cases/initialize-demo';
@@ -53,6 +54,7 @@ export function createAppContainer() {
       listScenarios: new ListScenariosUseCase(repositories),
       activateScenario: new ActivateScenarioUseCase(repositories, transactions, clock, ids),
       analytics: new GetAnalyticsDashboardUseCase(repositories, clock),
+      aiHistory: new GetAiRunHistoryUseCase(repositories),
       runComparison: new RunScenarioComparisonUseCase(repositories, clock, ids),
       ops: new GetOpsSummaryUseCase(repositories, metrics),
     },

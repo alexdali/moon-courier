@@ -17,6 +17,8 @@ export interface AiRunFinish {
   status: 'succeeded' | 'failed' | 'rejected';
   inputTokens: number;
   outputTokens: number;
+  cachedTokens: number;
+  cacheWriteTokens: number;
   costUsd: number;
   latencyMs: number;
   response?: unknown;
@@ -27,6 +29,7 @@ export interface AiRunFinish {
 
 export interface AiAuditRepository {
   startRun(run: AiRunStart): void;
+  recordProviderRequest(id: string, request: unknown): void;
   finishRun(id: string, finish: AiRunFinish): void;
   recordToolCall(input: {
     id: string;
@@ -42,4 +45,5 @@ export interface AiAuditRepository {
   }): void;
   sumCostSince(isoTimestamp: string): number;
   listRecent(limit: number): readonly Record<string, unknown>[];
+  listHistory(limit: number): readonly Record<string, unknown>[];
 }

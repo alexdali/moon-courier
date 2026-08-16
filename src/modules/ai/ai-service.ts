@@ -32,7 +32,7 @@ export class MoonCourierAiService implements AiService {
     this.client = new OpenRouterClient(env);
     this.router = new ModelRouter(env, repositories.aiAudit, clock, ids);
     this.agent = new MissionControlAgent(env, repositories, this.client, repositories.aiAudit);
-    this.scenarioGenerator = new AiScenarioGenerator(env, this.client);
+    this.scenarioGenerator = new AiScenarioGenerator(env, this.client, repositories.aiAudit);
     this.deterministicAssistant = new DeterministicAssistant(repositories);
     this.budget = new AiBudgetGuard(repositories.aiAudit, env);
   }
@@ -77,9 +77,9 @@ export class MoonCourierAiService implements AiService {
           requestType: 'scenario_generation',
           promptVersion: this.scenarioGenerator.promptVersion,
           request: input,
-          attempt: (model) => this.scenarioGenerator.run({ model, ...input }),
+          attempt: (model, aiRunId) => this.scenarioGenerator.run({ model, aiRunId, ...input }),
         });
-        const source = routed.role === 'primary' ? 'deepseek' as const : 'luna' as const;
+        const source = routed.role === 'primary' ? ('deepseek' as const) : ('luna' as const);
         const scenario = { ...routed.value.scenario, source: 'ai' as const };
         this.repositories.scenarios.save(scenario, {
           validation: routed.value.validation,
@@ -107,7 +107,11 @@ export class MoonCourierAiService implements AiService {
     const scenario = { ...compileScenarioBlueprint(blueprint), source: 'manual' as const };
     const validation = validateScenario(scenario);
     const balance = analyzeScenarioBalance(scenario, 50);
-    this.repositories.scenarios.save(scenario, { validation, prompt: input.prompt, model: 'deterministic-fallback' });
+    this.repositories.scenarios.save(scenario, {
+      validation,
+      prompt: input.prompt,
+      model: 'deterministic-fallback',
+    });
     return {
       source: 'deterministic' as const,
       model: null,

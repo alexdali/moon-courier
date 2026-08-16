@@ -10,6 +10,9 @@ describe('Russian UI translation', () => {
     ['ATLAS-1 charged from 20% to 100%', 'ATLAS-1 заряжен с 20% до 100%'],
     ['Balance is now 2750 credits', 'Текущий баланс: 2750 кр.'],
     ['Target is below gross upper bound of 4100 credits', 'Цель ниже предельной выручки 4100 кр.'],
+    ['Developer mode', 'Режим разработчика'],
+    ['Cached tokens', 'Токены из кэша'],
+    ['Request parameters', 'Параметры запроса'],
   ])('translates %s', (source, expected) => {
     expect(translateRussianText(source)).toBe(expected);
   });

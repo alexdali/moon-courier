@@ -10,6 +10,8 @@ export interface AiAttemptResult<T> {
   value: T;
   inputTokens: number;
   outputTokens: number;
+  cachedTokens: number;
+  cacheWriteTokens: number;
   costUsd: number;
   latencyMs: number;
   response: unknown;
@@ -59,13 +61,16 @@ export class ModelRouter {
       });
       try {
         const result = await input.attempt(model, id);
-        const cost = result.costUsd > 0
-          ? result.costUsd
-          : estimateTokenCost(result.inputTokens, result.outputTokens, model);
+        const cost =
+          result.costUsd > 0
+            ? result.costUsd
+            : estimateTokenCost(result.inputTokens, result.outputTokens, model);
         this.audit.finishRun(id, {
           status: 'succeeded',
           inputTokens: result.inputTokens,
           outputTokens: result.outputTokens,
+          cachedTokens: result.cachedTokens,
+          cacheWriteTokens: result.cacheWriteTokens,
           costUsd: cost,
           latencyMs: result.latencyMs,
           response: result.response,
@@ -82,13 +87,23 @@ export class ModelRouter {
         const telemetry = error instanceof AiAttemptError ? error.telemetry : null;
         const inputTokens = telemetry?.inputTokens ?? 0;
         const outputTokens = telemetry?.outputTokens ?? 0;
+        const cachedTokens = telemetry?.cachedTokens ?? 0;
+        const cacheWriteTokens = telemetry?.cacheWriteTokens ?? 0;
         const costUsd = telemetry
-          ? telemetry.costUsd > 0 ? telemetry.costUsd : estimateTokenCost(inputTokens, outputTokens, model)
+          ? telemetry.costUsd > 0
+            ? telemetry.costUsd
+            : estimateTokenCost(inputTokens, outputTokens, model)
           : 0;
         this.audit.finishRun(id, {
-          status: error instanceof Error && /invalid|reject|schema|validation|survivable|tool/i.test(error.message) ? 'rejected' : 'failed',
+          status:
+            error instanceof Error &&
+            /invalid|reject|schema|validation|survivable|tool/i.test(error.message)
+              ? 'rejected'
+              : 'failed',
           inputTokens,
           outputTokens,
+          cachedTokens,
+          cacheWriteTokens,
           costUsd,
           latencyMs: telemetry?.latencyMs ?? 0,
           ...(telemetry?.response === undefined ? {} : { response: telemetry.response }),

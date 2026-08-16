@@ -11,7 +11,10 @@ export class AiProviderError extends Error {
 }
 
 export class AiOutputError extends Error {
-  constructor(message: string, readonly details?: unknown) {
+  constructor(
+    message: string,
+    readonly details?: unknown,
+  ) {
     super(message);
     this.name = 'AiOutputError';
   }
@@ -27,6 +30,8 @@ export class AiBudgetError extends Error {
 export interface AiAttemptTelemetry {
   inputTokens: number;
   outputTokens: number;
+  cachedTokens: number;
+  cacheWriteTokens: number;
   costUsd: number;
   latencyMs: number;
   response?: unknown;

@@ -4,7 +4,11 @@ import type { RepositoryBundle } from '@/application/ports/repository-bundle';
 import { loadMissionState } from '@/application/services/mission-state-reader';
 import type { AppEnv } from '@/config/env';
 import type { AiModelConfig } from '@/config/ai-models';
-import { missionControlContext, missionControlSystemPrompt, MISSION_CONTROL_PROMPT_VERSION } from '@/modules/ai/prompts/mission-control';
+import {
+  missionControlContext,
+  missionControlSystemPrompt,
+  MISSION_CONTROL_PROMPT_VERSION,
+} from '@/modules/ai/prompts/mission-control';
 import { OpenRouterClient } from '@/modules/ai/openrouter/client';
 import { buildOpenRouterRequest } from '@/modules/ai/openrouter/request-builder';
 import { parseJsonContent } from '@/modules/ai/openrouter/response-parser';
@@ -25,7 +29,9 @@ export class MissionControlAgent {
     this.tools = new MissionToolRegistry(repositories);
   }
 
-  get promptVersion(): string { return MISSION_CONTROL_PROMPT_VERSION; }
+  get promptVersion(): string {
+    return MISSION_CONTROL_PROMPT_VERSION;
+  }
 
   async run(input: {
     model: AiModelConfig;
@@ -52,6 +58,8 @@ export class MissionControlAgent {
     ];
     let inputTokens = 0;
     let outputTokens = 0;
+    let cachedTokens = 0;
+    let cacheWriteTokens = 0;
     let costUsd = 0;
     let latencyMs = 0;
     const executed: { name: string; arguments: unknown; resultSummary: string }[] = [];
@@ -61,14 +69,18 @@ export class MissionControlAgent {
 
     try {
       for (let turn = 0; turn < this.env.AI_MAX_TOOL_TURNS; turn += 1) {
-        const completion = await this.client.complete(buildOpenRouterRequest({
+        const request = buildOpenRouterRequest({
           env: this.env,
           model: input.model.model,
           messages,
           tools: this.tools.definitions(),
-        }));
+        });
+        this.audit.recordProviderRequest(input.aiRunId, request);
+        const completion = await this.client.complete(request);
         inputTokens += completion.usage.prompt_tokens;
         outputTokens += completion.usage.completion_tokens;
+        cachedTokens += completion.usage.cached_tokens;
+        cacheWriteTokens += completion.usage.cache_write_tokens;
         costUsd += completion.usage.cost;
         latencyMs += completion.latencyMs;
         lastResponse = completion.response;
@@ -93,9 +105,17 @@ export class MissionControlAgent {
               createdAt,
             });
             try {
-              const result = await this.tools.execute(call.function.name, argumentsValue, input.missionId);
+              const result = await this.tools.execute(
+                call.function.name,
+                argumentsValue,
+                input.missionId,
+              );
               const durationMs = Math.round(performance.now() - started);
-              executed.push({ name: call.function.name, arguments: argumentsValue, resultSummary: result.summary });
+              executed.push({
+                name: call.function.name,
+                arguments: argumentsValue,
+                resultSummary: result.summary,
+              });
               if (result.suggestedSelection) suggestedSelection = result.suggestedSelection;
               this.audit.recordToolCall({
                 id: auditId,
@@ -141,7 +161,9 @@ export class MissionControlAgent {
         const answer = completion.message.content?.trim();
         if (!answer) throw new AiOutputError('Mission Control returned no final answer');
         if (!usedTool && !/^(hi|hello|hey|привет|здравствуй)/i.test(input.message.trim())) {
-          throw new AiOutputError('Mission Control answered an operational question without calling a deterministic tool');
+          throw new AiOutputError(
+            'Mission Control answered an operational question without calling a deterministic tool',
+          );
         }
         return {
           value: {
@@ -151,6 +173,8 @@ export class MissionControlAgent {
           },
           inputTokens,
           outputTokens,
+          cachedTokens,
+          cacheWriteTokens,
           costUsd,
           latencyMs,
           response: lastResponse,
@@ -158,12 +182,15 @@ export class MissionControlAgent {
       }
       throw new AiOutputError(`Mission Control exceeded ${this.env.AI_MAX_TOOL_TURNS} tool turns`);
     } catch (error) {
-      if (error instanceof AiProviderError || error instanceof AiAttemptError || inputTokens === 0) throw error;
+      if (error instanceof AiProviderError || error instanceof AiAttemptError || inputTokens === 0)
+        throw error;
       throw new AiAttemptError(
         error instanceof Error ? error.message : 'Mission Control output validation failed',
         {
           inputTokens,
           outputTokens,
+          cachedTokens,
+          cacheWriteTokens,
           costUsd,
           latencyMs,
           ...(lastResponse === null ? {} : { response: lastResponse }),
