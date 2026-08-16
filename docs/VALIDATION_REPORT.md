@@ -8,12 +8,12 @@
 
 Проверено в рабочем дереве:
 
-- 256 TypeScript/TSX-файлов в `src`;
-- 37 файлов в `src/test`, из них 33 `*.test.ts` / `*.spec.ts`;
-- 29 Vitest-файлов и 4 Playwright spec-файла;
+- 258 TypeScript/TSX-файлов в `src`;
+- 38 файлов в `src/test`, из них 34 `*.test.ts` / `*.spec.ts`;
+- 29 Vitest-файлов и 5 Playwright spec-файлов;
 - 45 Markdown-документов, включая evidence report и автоматически поддерживаемые Next.js agent rules;
 - 3 SQL migration;
-- 4 актуальных скриншота интерфейса;
+- 5 актуальных скриншотов интерфейса;
 - Dockerfile, Docker Compose и GitHub Actions CI.
 
 ## 2. Полный local quality gate
@@ -28,13 +28,13 @@ npm run validate
 Результат:
 
 ```text
-Structure validation passed: 256 source files, no unresolved local imports.
+Structure validation passed: 258 source files, no unresolved local imports.
 SQL validation passed: 3 migrations, 18 tables.
 Domain validation: PASS.
-Syntax validation passed for 272 TypeScript/TSX files.
+Syntax validation passed for 274 TypeScript/TSX files.
 Documentation links: PASS, 45 Markdown files / 57 local links.
 Static assets: PASS, 6 HTML files / 53 local references / 4 JS files.
-Secret scan: PASS, 303 text/config files, no credential patterns.
+Secret scan: PASS, 305 text/config files, no credential patterns.
 TypeScript: PASS.
 ESLint: PASS, 0 warnings.
 Vitest: 29 files passed, 44 tests passed.
@@ -102,7 +102,7 @@ Health endpoint подтвердил доступность SQLite и конфи
 Выполнено в Chromium локально и повторно против публичного VPS `http://38.45.65.229`:
 
 ```text
-8 passed
+10 passed
 ```
 
 Проверены:
@@ -114,6 +114,11 @@ Health endpoint подтвердил доступность SQLite и конфи
 - Scenario Architect и Analytics доступны;
 - интерфейс по умолчанию русский;
 - переключение `RU → EN → reload → RU` меняет интерфейс и сохраняет выбор.
+- светлая «Простая» версия открывается по умолчанию, а «Подробная» сохраняет исходную информационно насыщенную оболочку;
+- выбор версии сохраняется после перезагрузки;
+- в первом слое каждой карточки заказа и ровера остаётся ровно два показателя, остальные данные раскрываются по запросу;
+- карта стартует без зон риска, сетки, нижней служебной строки и лишних подписей; отдельная кнопка возвращает полный слой;
+- журнал событий и ИИ-помощник в простой версии свёрнуты;
 - на всех пяти страницах приложения отсутствуют известные англоязычные UI-надписи в русском режиме;
 - динамические статусы, ошибки, единицы измерения, названия заказов и сценарные подсказки локализованы;
 - английскими оставлены только собственные имена точек карты, роверов, моделей и технологических продуктов.
@@ -124,12 +129,13 @@ Health endpoint подтвердил доступность SQLite и конфи
 
 ```text
 screenshots/mission-control.png
+screenshots/mission-control-detailed.png
 screenshots/scenario-architect.png
 screenshots/mission-debrief.png
 screenshots/ops.png
 ```
 
-Проверены layout 1440×900, полная русская локализация, навигация, карта, карточки, аналитика и эксплуатационная панель. Маркеры нескольких роверов/заказов на одном узле разнесены, чтобы не накладываться друг на друга.
+Проверены светлая и тёмная версии, layout 1440×900 и мобильный viewport 390×844, отсутствие горизонтального переполнения, полная русская локализация, раскрытие подробностей, навигация, карта, карточки, аналитика и эксплуатационная панель. Маркеры нескольких роверов/заказов на одном узле разнесены, чтобы не накладываться друг на друга.
 
 ## 9. Docker / VPS path
 
@@ -139,9 +145,9 @@ screenshots/ops.png
 docker build --tag moon-courier:verify .
 ```
 
-Результат актуального VPS-развёртывания: образ `sha256:6439f9bdef2ad98ed372ae1660d8b22e0d068dec6f149c5acfba7288629a7df8`, около 138 MB. Зависимости установлены воспроизводимо через `npm ci` из lock-файла; npm audit сообщил 0 vulnerabilities.
+Результат актуального VPS-развёртывания: образ `sha256:83bc67f240cbf64c8adef3e5fe3edbbc593dc9fcf313beeb3ce62c0d03a174bd`, около 138 MB. Зависимости установлены воспроизводимо через `npm ci` из lock-файла; npm audit сообщил 0 vulnerabilities.
 
-Контейнер запущен как непривилегированный `appuser`; внутри автоматически применены migration и seed SQLite. Контейнер имеет статус `healthy`, публичный HTTP возвращает 200. Против VPS успешно повторены smoke и все 8 E2E; после теста демонстрационная миссия сброшена и создана свежая резервная копия.
+Контейнер запущен как непривилегированный `appuser`; внутри автоматически применены migration и seed SQLite. Контейнер имеет статус `healthy`, публичный HTTP возвращает 200. Против VPS успешно повторены smoke и все 10 E2E; после теста демонстрационная миссия сброшена и создана свежая резервная копия.
 
 ## 10. AI routing
 
