@@ -9,7 +9,9 @@ The current single-host layout keeps project material separate from the deployab
 └── backups/
 ```
 
-`Caddyfile.ip` exposes the application over HTTP while no domain is assigned. Replace `:80` with the domain after DNS is configured; Caddy will then provision HTTPS automatically.
+`Caddyfile` exposes the application at `https://moon-courier.testvps.click`.
+Caddy provisions and renews the TLS certificate automatically after the DNS
+record points to the VPS.
 
 The backup unit uses SQLite's online `.backup` command, validates the compressed artifact, and retains 14 days by default. Install it with:
 
