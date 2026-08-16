@@ -66,7 +66,6 @@ export class MissionControlAgent {
           model: input.model.model,
           messages,
           tools: this.tools.definitions(),
-          temperature: 0.1,
         }));
         inputTokens += completion.usage.prompt_tokens;
         outputTokens += completion.usage.completion_tokens;

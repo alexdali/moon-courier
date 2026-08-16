@@ -28,10 +28,8 @@ export interface OpenRouterRequest {
   messages: readonly OpenRouterMessage[];
   tools?: readonly OpenRouterToolDefinition[];
   tool_choice?: 'auto' | 'none' | 'required';
-  parallel_tool_calls?: boolean;
   response_format?: Record<string, unknown>;
-  temperature?: number;
-  max_completion_tokens?: number;
+  max_tokens?: number;
   reasoning?: { enabled: boolean; effort?: 'none' | 'minimal' | 'low' | 'medium' | 'high' | 'xhigh' };
   provider?: { require_parameters?: boolean; data_collection?: 'allow' | 'deny' };
 }

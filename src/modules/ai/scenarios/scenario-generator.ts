@@ -40,7 +40,6 @@ export class AiScenarioGenerator {
         type: 'json_schema',
         json_schema: { name: 'moon_courier_scenario', strict: true, schema: scenarioBlueprintJsonSchema },
       },
-      temperature: 0.35,
     }));
     try {
       const raw = parseJsonContent<unknown>(completion.message.content);
