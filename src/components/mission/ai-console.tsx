@@ -13,6 +13,13 @@ const quickPrompts = [
   { label: 'Compare', en: 'Compare the current fleet with one additional heavy rover.', ru: 'Сравни текущий флот с вариантом, где добавлен один тяжёлый ровер.' },
 ] as const;
 
+function modelLabel(model: string | null): string | null {
+  if (!model) return null;
+  if (model.includes('deepseek')) return 'DeepSeek';
+  if (model.includes('luna')) return 'Luna';
+  return model;
+}
+
 export function AiConsole() {
   const { locale, t } = useI18n();
   const dashboard = useMissionStore((state) => state.dashboard);
@@ -27,6 +34,7 @@ export function AiConsole() {
   const [message, setMessage] = useState('');
   const [requestError, setRequestError] = useState<string | null>(null);
   const responseRef = useRef<HTMLElement>(null);
+  const inFlightRef = useRef(false);
   const isAiBusy = busy === 'ai';
 
   useEffect(() => {
@@ -34,7 +42,8 @@ export function AiConsole() {
   }, [response]);
 
   async function submit(value = message) {
-    if (!value.trim()) return;
+    if (!value.trim() || inFlightRef.current) return;
+    inFlightRef.current = true;
     setBusy('ai'); setError(null); setRequestError(null); setResponse(null);
     try {
       setResponse(await apiClient.askAi({
@@ -48,12 +57,12 @@ export function AiConsole() {
       const errorMessage = error instanceof Error ? error.message : String(error);
       setRequestError(errorMessage); setError(errorMessage);
     }
-    finally { setBusy(null); }
+    finally { inFlightRef.current = false; setBusy(null); }
   }
   function onSubmit(event: FormEvent) { event.preventDefault(); void submit(); }
 
   return <section className="ai-console">
-    <div className="section-label"><span><Icon name="spark" size={14}/>{t('Mission Control AI')}</span><StatusPill tone={response?.mode === 'deterministic' ? 'neutral' : 'cyan'}>{isAiBusy ? t('Analyzing') : response?.mode === 'deterministic' ? t('offline') : response?.model ?? (dashboard.ai.mode === 'online' ? 'DeepSeek → Luna' : t('offline'))}</StatusPill></div>
+    <div className="section-label"><span><Icon name="spark" size={14}/>{t('Mission Control AI')}</span><StatusPill tone={response?.mode === 'deterministic' ? 'neutral' : 'cyan'}>{isAiBusy ? t('Analyzing') : response?.mode === 'deterministic' ? t('offline') : modelLabel(response?.model ?? null) ?? (dashboard.ai.mode === 'online' ? 'DeepSeek → Luna' : t('offline'))}</StatusPill></div>
     <div className="quick-prompts">{quickPrompts.map((item) => <button type="button" key={item.label} onClick={() => void submit(item[locale])} disabled={isAiBusy}>{t(item.label)}</button>)}</div>
     {isAiBusy ? <div className="ai-loading" role="status" aria-live="polite"><span aria-hidden="true"/>{t('AI is analyzing…')}</div> : null}
     {requestError ? <div className="inline-error" role="alert"><Icon name="alert" size={15}/>{t(requestError)}</div> : null}
