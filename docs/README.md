@@ -11,10 +11,8 @@
 7. [`ANALYTICS_AND_SIMULATION.md`](ANALYTICS_AND_SIMULATION.md) — Monte Carlo и evidence-first analytics.
 8. [`FILE_MAP.md`](FILE_MAP.md) — назначение модульных файлов.
 9. [`TEST_STRATEGY.md`](TEST_STRATEGY.md) — unit, property, integration, E2E и live AI evaluation.
-10. [`THREE_DAY_PLAN.md`](THREE_DAY_PLAN.md) — почасовой план.
-11. [`ACCEPTANCE_MATRIX.md`](ACCEPTANCE_MATRIX.md) — покрытие требований задания.
-12. [`DEMO_SCRIPT.md`](DEMO_SCRIPT.md) — сценарий защиты.
-13. [`VALIDATION_REPORT.md`](VALIDATION_REPORT.md) — что было фактически проверено.
+10. [`ACCEPTANCE_MATRIX.md`](ACCEPTANCE_MATRIX.md) — покрытие требований задания.
+11. [`VALIDATION_REPORT.md`](VALIDATION_REPORT.md) — что было фактически проверено.
 
 Дополнительные документы:
 
